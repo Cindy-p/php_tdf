@@ -1,4 +1,5 @@
 <?php
+include("connexion.php");
 include("formulaire.php");
 /*if (!empty($_POST)){
     echo "<pre>";
@@ -6,8 +7,8 @@ include("formulaire.php");
     echo "</pre>";
 }*/
 
-$db_username = "steven";
-$db_password = "Nokia5530";
+$db_username = "cindy.perat";
+$db_password = "Peratlccsl61";
 $db = "oci:dbname=xe";
 $conn = new PDO($db, $db_username, $db_password);
 
@@ -46,7 +47,7 @@ if(isset($_POST['prenomCoureur'])){
 }
 
 function traitementAccents($chaine){
-	if($chaine == $_POST['nomCoureur']{
+	if($chaine == $_POST['nomCoureur']){
 		if(preg_match("#[àÀáÁâÂãÃäÄåÅ]#", $chaine))
 			$chaine = preg_replace("#[àÀáÁâÂãÃäÄåÅ]#", "a", $chaine);
 	}	
@@ -61,7 +62,7 @@ function traitementAccents($chaine){
 	if(preg_match("#[èÈéÉêÊëË]#", $chaine))
 		$chaine = preg_replace("#[èÈéÉêÊëË]#", "e", $chaine);
 	
-	if($chaine == $_POST['nomCoureur']{
+	if($chaine == $_POST['nomCoureur']){
 		if(preg_match("#[ìÌíÍîÎïÏ]#", $chaine))
 			$chaine = preg_replace("#[ìÌíÍîÎïÏ]#", "i", $chaine);
 	}
@@ -70,7 +71,7 @@ function traitementAccents($chaine){
 			$chaine = preg_replace("#[ìÌíÍÎÏ]#", "i", $chaine);
 	}
 	
-	if($chaine == $_POST['nomCoureur']{	
+	if($chaine == $_POST['nomCoureur']){	
 		if(preg_match("#[òÒóÓôÔõÕöÖøØ]#", $chaine))
 			$chaine = preg_replace("#[òÒóÓôÔõÕöÖøØ]#", "o", $chaine);
 	}
@@ -79,7 +80,7 @@ function traitementAccents($chaine){
 			$chaine = preg_replace("#[òÒóÓÔõÕöÖøØ]#", "o", $chaine);
 	}
 	
-	if($chaine == $_POST['nomCoureur']{	
+	if($chaine == $_POST['nomCoureur']){	
 		if(preg_match("#[ùÙúÚûÛüÜ]#", $chaine))
 			$chaine = preg_replace("#[ùÙúÚûÛüÜ]#", "u", $chaine);
 	}
@@ -94,7 +95,7 @@ function traitementAccents($chaine){
 		if(preg_match("#[çÇ]#", $chaine))
 			$chaine = preg_replace("#[çÇ]#", "c", $chaine);
 	
-	if($chaine == $_POST['nomCoureur']{	
+	if($chaine == $_POST['nomCoureur']){	
 		if(preg_match("#[ıİÿŸ]#", $chaine))
 			$chaine = preg_replace("#[ıİÿŸ]#", "y", $chaine);
 	}
