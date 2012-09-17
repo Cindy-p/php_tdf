@@ -1,14 +1,61 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     </head>
-<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="application/x-www-form-urlencoded">
-    <p><b>Insertion dans la table coureur : </b></p>
-    <label for="nomCoureur">Nom : </label><input type="text" name="nomCoureur" id="nomCoureur"/><br />
-    <label for="prenomCoureur">Prénom : </label><input type="text" name="prenomCoureur" id="prenomCoureur"/><br />
-    <label for="anneeNaissance">Année de naissance : </label><input type="text" name="anneeNaissance" id="anneeNaissance"/><br />
-    <label for="codeTdf">Pays : </label><input type="text" name="codeTdf" id="codeTdf"/><br />
-    <label for="anneeTdf">Année du Tour de France : </label><input type="text" name="anneeTdf" id="anneeTdf"/><br />
-    <input type="submit" name="valider" />
-</form>
+    
+    <body>
+        <div class="container">
+            <form class="form-horizontal" action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="application/x-www-form-urlencoded">
+                <legend>Insertion dans la table coureur</legend>
+                
+                <div class="control-group">    
+                    <label class="control-label" for="nomCoureur"> Nom </label>
+                        <div class="controls">
+                        <input type="text" name="nomCoureur" id="nomCoureur" placeholder="Nom">
+                    </div>
+                </div>
+            
+                <div class="control-group">    
+                    <label class="control-label" for="prenomCoureur">Prénom</label>
+                    <div class="controls">
+                        <input type="text" name="prenomCoureur" id="prenomCoureur" placeholder="Prénom">
+                    </div>
+                </div>
+            
+                <div class="control-group">    
+                    <label class="control-label" for="anneeNaissance"> Année de naissance </label>
+                    <div class="controls">
+                        <select>
+                            <?php for ($i=1900 ; $i<=(date('Y')-17) ; $i++): ?>
+                                <option><?php echo $i; ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                </div>
+            
+                <div class="control-group">
+                    <label class="control-label" for="codeTdf"> Pays </label>
+                    <div class="controls">
+                        <input type="text" name="codeTdf" id="codeTdf" placeholder="Pays">
+                    </div>
+                </div>
+                
+                <div class="control-group">    
+                    <label class="control-label" for="anneeTdf">Année de participation</label>
+                    <div class="controls">
+                        <select>
+                            <?php for ($i=1900 ; $i<=date('Y') ; $i++): ?>
+                                <option><?php echo $i; ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                </div>
+            
+                <div class="controls">
+                    <button type="submit" class="btn"/>Valider</button>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>

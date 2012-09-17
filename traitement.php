@@ -1,4 +1,5 @@
 <?php
+include("connexion.php");
 include("formulaire.php");
 /*if (!empty($_POST)){
     echo "<pre>";
@@ -12,7 +13,7 @@ $db = "oci:dbname=xe";
 $conn = new PDO($db, $db_username, $db_password);
 
 // affichage de la tab------------------------------------------
-echo "<PRE>";
+/*echo "<PRE>";
 $sql = 'select * from tdf_coureur_bidon where N_COUREUR >= 4680';
 foreach ($conn->query($sql) as $tab) {
     print $tab['N_COUREUR']."\t";
@@ -22,11 +23,11 @@ foreach ($conn->query($sql) as $tab) {
     print $tab['CODE_TDF']."\t";
     print $tab['ANNEE_TDF']."\n";
 }
-echo "</PRE>";
+echo "</PRE>";*/
 
-$req1 = $conn->query("select max(N_COUREUR)+5 as num from tdf_coureur_bidon");
-$num = $req1->fetch();
-echo $num['NUM']."<br />";
+$req1 = $conn->query("select max(N_COUREUR)+5 as NUM from tdf_coureur_bidon");
+$num = $req1->fetch(); // renvoie un tableau
+//echo $num['NUM']."<br />"; // Test
 
 // requête d'insertion des coureurs-----------------------------
 $req = $conn->prepare("insert into tdf_coureur_bidon (N_COUREUR, NOM, PRENOM, ANNEE_NAISSANCE, CODE_TDF, ANNEE_TDF) values (:num_unique, :n, :p, :an, :ctdf, :atdf)")
