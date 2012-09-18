@@ -124,20 +124,26 @@ function traitementAccentsP($chaine){
 	
 	if(preg_match("#[òÒóÓÔõÕÖøØ]#", $chaine)){
 		$chaine = preg_replace("#[òÒóÓõÕøØ]#", "o", $chaine);
-		if(preg_match("#[Ï]#", $chaine))
+		if(preg_match("#[Ö]#", $chaine))
 			$chaine = preg_replace("#[Ö]#", "ö", $chaine);
-		if(preg_match("#[Ï]#", $chaine))
+		if(preg_match("#[Ô]#", $chaine))
 			$chaine = preg_replace("#[Ô]#", "ô", $chaine);
 	}
 
-	if(preg_match("#[ùÙúÚûÛüÜ]#", $chaine)) // à finir
-		$chaine = preg_replace("#[ùÙúÚûÛüÜ]#", "u", $chaine);
-	
+	if(preg_match("#[ÙúÚÛÜ]#", $chaine)){
+		$chaine = preg_replace("#[úÚ]#", "u", $chaine);
+		if(preg_match("#[Ù]#", $chaine))
+			$chaine = preg_replace("#[Ù]#", "ù", $chaine);
+		if(preg_match("#[Û]#", $chaine))
+			$chaine = preg_replace("#[Û]#", "û", $chaine);
+		if(preg_match("#[Ü]#", $chaine))
+			$chaine = preg_replace("#[Ü]#", "ü", $chaine);
+	}
 	if(preg_match("#[ñÑ]#", $chaine))
 		$chaine = preg_replace("#[ñÑ]#", "n", $chaine);
 		
-	if(preg_match("#[çÇ]#", $chaine))
-		$chaine = preg_replace("#[çÇ]#", "c", $chaine);
+	if(preg_match("#[Ç]#", $chaine))
+		$chaine = preg_replace("#[Ç]#", "ç", $chaine);
 		
 	if(preg_match("#[ıİÿŸ]#", $chaine))
 		$chaine = preg_replace("#[ıİÿŸ]#", "y", $chaine);
