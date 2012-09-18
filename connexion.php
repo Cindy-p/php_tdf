@@ -5,16 +5,16 @@
   </head>
   <body>
     <div class="container">
-      <form class="form-inline">
+      <form class="form-inline" action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="application/x-www-form-urlencoded">
         <legend>Connexion</legend>
           <div class="controls">
               <div class="input-prepend">
                   <span class="add-on"><i class="icon-user"></i></span>
-                  <input type="text" class="input-small" placeholder="Pseudo">
+                  <input name="db_username" type="text" class="input-small" placeholder="Pseudo">
               </div>
-              <input type="password" class="input-small" placeholder="Mot de passe">
+              <input name="db_password" type="password" class="input-small" placeholder="Mot de passe">
               <label class="checkbox">
-                  <input type="checkbox"> Remember me
+                  <input type="checkbox"> Se souvenir de moi
               </label>
               <button type="submit" class="btn">Se connecter</button>
           </div>

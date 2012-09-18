@@ -1,16 +1,8 @@
 <?php
-include("connexion.php");
+//include("connexion.php");
+//include("traitement_connexion.php");
 include("formulaire.php");
-/*if (!empty($_POST)){
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
-}*/
-
-$db_username = "cindy.perat";
-$db_password = "Peratlccsl61";
-$db = "oci:dbname=xe";
-$conn = new PDO($db, $db_username, $db_password);
+$isValid = 1;
 
 // traitement des données entrées -----------------------------------------------------------------------------------------------------------------------------
 
@@ -19,17 +11,18 @@ $conn = new PDO($db, $db_username, $db_password);
 if(isset($_POST['nomCoureur'])){
 	$_POST['nomCoureur'] = htmlspecialchars($_POST['nomCoureur']);
 	echo $_POST['nomCoureur']."<br />";
-	
+  
 	if(preg_match("#^['| |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $_POST['nomCoureur'])){
 		echo "nom non valide"."<br />";
 		echo "veuillez retaper un nom valide"."<br />";
-		exit;
+    $isValid = 0;
+		//exit;
 	}
-	
-	$_POST['nomCoureur'] = traitementAccents($_POST['nomCoureur']);
-	$_POST['nomCoureur'] = strtoupper($_POST['nomCoureur']);
-	
-	echo$_POST['nomCoureur']."<br />";
+	else {
+    $_POST['nomCoureur'] = traitementAccents($_POST['nomCoureur']);
+    $_POST['nomCoureur'] = strtoupper($_POST['nomCoureur']);
+    echo $_POST['nomCoureur']."<br />";
+  }
 }
 
 //--------------- PRENOM COUREUR ---------------
@@ -41,14 +34,17 @@ if(isset($_POST['prenomCoureur'])){
 	if(preg_match("#^['| |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $_POST['prenomCoureur'])){
 		echo "prenom non valide"."<br />";
 		echo "veuillez retaper un prenom valide"."<br />";
-		exit;
+    $isValid = 0;
+		//exit;
 	}
-	
-	$_POST['prenomCoureur'] = traitementAccentsP($_POST['prenomCoureur']);
-	$_POST['prenomCoureur'] = ucfirst(strtolower($_POST['prenomCoureur']));
-	
-	echo$_POST['prenomCoureur']."<br />";
+	else {
+    $_POST['prenomCoureur'] = traitementAccentsP($_POST['prenomCoureur']);
+    $_POST['prenomCoureur'] = ucfirst(strtolower($_POST['prenomCoureur']));
+    echo $_POST['prenomCoureur']."<br />";
+  }
 }
+
+//include("formulaire.php");
 
 //--------------- FONCTIONS DE TRAITEMENT ---------------
 

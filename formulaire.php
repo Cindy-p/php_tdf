@@ -8,14 +8,25 @@
         <div class="container">
             <form class="form-horizontal" action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="application/x-www-form-urlencoded">
                 <legend>Insertion dans la table coureur</legend>
+                                
+                <?php if ($isValid == 1): ?>
+                  <div class="control-group">    
+                      <label class="control-label" for="nomCoureur"> Nom </label>
+                      <div class="controls">
+                          <input type="text" name="nomCoureur" id="nomCoureur" placeholder="Nom">
+                      </div>
+                  </div>
+                <?php else: ?>
+                  <div class="control-group error">
+                      <label class="control-label" for="inputError">Nom</label>
+                      <div class="controls">
+                          <input type="text" id="inputError">
+                          <span class="help-inline">Veuillez entrer un nom valide</span>
+                      </div>
+                  </div>
+                <?php endif; ?>
                 
-                <div class="control-group">    
-                    <label class="control-label" for="nomCoureur"> Nom </label>
-                        <div class="controls">
-                        <input type="text" name="nomCoureur" id="nomCoureur" placeholder="Nom">
-                    </div>
-                </div>
-            
+                            
                 <div class="control-group">    
                     <label class="control-label" for="prenomCoureur">Prénom</label>
                     <div class="controls">
