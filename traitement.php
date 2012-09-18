@@ -7,8 +7,8 @@ include("formulaire.php");
     echo "</pre>";
 }*/
 
-$db_username = "steven";
-$db_password = "Nokia5530";
+$db_username = "cindy.perat";
+$db_password = "Peratlccsl61";
 $db = "oci:dbname=xe";
 $conn = new PDO($db, $db_username, $db_password);
 
