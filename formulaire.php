@@ -9,30 +9,39 @@
             <form class="form-horizontal" action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="application/x-www-form-urlencoded">
                 <legend>Insertion dans la table coureur</legend>
                                 
-                <?php if ($isValid == 1): ?>
+                <?php if($isValidNom){ ?>
                   <div class="control-group">    
-                      <label class="control-label" for="nomCoureur"> Nom </label>
+                      <label class="control-label" for="nomCoureur">Nom</label>
                       <div class="controls">
                           <input type="text" name="nomCoureur" id="nomCoureur" placeholder="Nom">
                       </div>
                   </div>
-                <?php else: ?>
+                <?php }else{ ?>
                   <div class="control-group error">
-                      <label class="control-label" for="inputError">Nom</label>
+                      <label class="control-label" for="nomCoureur">Nom</label>
                       <div class="controls">
-                          <input type="text" id="inputError">
+                          <input type="text" name="nomCoureur" id="nomCoureur">
                           <span class="help-inline">Veuillez entrer un nom valide</span>
                       </div>
                   </div>
-                <?php endif; ?>
+                <?php } ?>
                 
-                            
-                <div class="control-group">    
-                    <label class="control-label" for="prenomCoureur">Prénom</label>
-                    <div class="controls">
-                        <input type="text" name="prenomCoureur" id="prenomCoureur" placeholder="Prénom">
+                <?php if($isValidNom){ ?>            
+                    <div class="control-group">    
+                        <label class="control-label" for="prenomCoureur">Prénom</label>
+                        <div class="controls">
+                            <input type="text" name="prenomCoureur" id="prenomCoureur" placeholder="Prénom">
+                        </div>
                     </div>
-                </div>
+                <?php }else{ ?>
+                  <div class="control-group error">
+                      <label class="control-label" for="prenomCourreur">Prénom</label>
+                      <div class="controls">
+                          <input type="text" name="prenomCoureur" id="prenomCoureur">
+                          <span class="help-inline">Veuillez entrer un prénom valide</span>
+                      </div>
+                  </div>
+                <?php } ?>
             
                 <div class="control-group">    
                     <label class="control-label" for="anneeNaissance"> Année de naissance </label>

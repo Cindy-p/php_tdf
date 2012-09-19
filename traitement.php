@@ -1,8 +1,7 @@
 <?php
 //include("connexion.php");
 //include("traitement_connexion.php");
-include("formulaire.php");
-$isValid = 1;
+//include("formulaire.php");
 
 // traitement des données entrées -----------------------------------------------------------------------------------------------------------------------------
 
@@ -10,18 +9,18 @@ $isValid = 1;
 
 if(isset($_POST['nomCoureur'])){
 	$_POST['nomCoureur'] = htmlspecialchars($_POST['nomCoureur']);
-	echo $_POST['nomCoureur']."<br />";
+	//echo $_POST['nomCoureur']."<br />";
   
-	if(preg_match("#^['| |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $_POST['nomCoureur'])){
-		echo "nom non valide"."<br />";
-		echo "veuillez retaper un nom valide"."<br />";
-    $isValid = 0;
+	if (preg_match("#^['| |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $_POST['nomCoureur'])){
+		//echo "nom non valide"."<br />";
+		//echo "veuillez retaper un nom valide"."<br />";
+        $isValidNom = false;
 		//exit;
 	}
 	else {
-    $_POST['nomCoureur'] = traitementAccents($_POST['nomCoureur']);
-    $_POST['nomCoureur'] = strtoupper($_POST['nomCoureur']);
-    echo $_POST['nomCoureur']."<br />";
+        $_POST['nomCoureur'] = traitementAccents($_POST['nomCoureur']);
+        $_POST['nomCoureur'] = strtoupper($_POST['nomCoureur']);
+        //echo $_POST['nomCoureur']."<br />";
   }
 }
 
@@ -29,22 +28,20 @@ if(isset($_POST['nomCoureur'])){
 
 if(isset($_POST['prenomCoureur'])){
 	$_POST['prenomCoureur'] = htmlspecialchars($_POST['prenomCoureur']);
-	echo $_POST['prenomCoureur']."<br />";
+	//echo $_POST['prenomCoureur']."<br />";
 	
 	if(preg_match("#^['| |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $_POST['prenomCoureur'])){
-		echo "prenom non valide"."<br />";
-		echo "veuillez retaper un prenom valide"."<br />";
-    $isValid = 0;
+		//echo "prenom non valide"."<br />";
+		//echo "veuillez retaper un prenom valide"."<br />";
+        $isValidPrenom = false;
 		//exit;
 	}
 	else {
     $_POST['prenomCoureur'] = traitementAccentsP($_POST['prenomCoureur']);
     $_POST['prenomCoureur'] = ucfirst(strtolower($_POST['prenomCoureur']));
-    echo $_POST['prenomCoureur']."<br />";
+    //echo $_POST['prenomCoureur']."<br />";
   }
 }
-
-//include("formulaire.php");
 
 //--------------- FONCTIONS DE TRAITEMENT ---------------
 
