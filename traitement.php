@@ -1,7 +1,6 @@
 <?php
 //include("connexion.php");
 //include("traitement_connexion.php");
-//include("formulaire.php");
 
 // traitement des données entrées -----------------------------------------------------------------------------------------------------------------------------
 
@@ -146,6 +145,14 @@ function traitementAccentsP($chaine){
 		
 	return $chaine;
 }
+
+// requête permettant de récupérer la liste des pays-----------------------------------------------
+/*$req = $conn->query("select * from TDF_PAYS order by NOM");
+while ($donnees = $req->fetch()) {
+    
+}*/
+
+
 
 // requête d'insertion des coureurs ---------------------------------------------------------------------------------------------------------------------------
 // NE PAS SUPPRIMER !! 
