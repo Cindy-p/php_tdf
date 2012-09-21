@@ -7,6 +7,7 @@
     <?php
         $isValidNom = true;
         $isValidPrenom = true;
+        include("traitement_connexion.php");
         include("traitement.php");
         include("formulaire.php");
     ?>

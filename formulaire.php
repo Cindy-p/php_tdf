@@ -57,17 +57,27 @@
                 <div class="control-group">
                     <label class="control-label" for="codeTdf"> Pays </label>
                     <div class="controls">
-                        <input type="text" name="codeTdf" id="codeTdf" placeholder="Pays">
+                        <select name="nomPays" size="1">
+                            <?php
+                                $req = $conn->query("select NOM from TDF_PAYS order by NOM");
+                                while ($donnees = $req->fetch()) {
+                                    echo '<option value="'.$donnees['NOM'].'">' .$donnees['NOM']. '</option>';
+                                }
+                            ?>
+                        </select>
                     </div>
                 </div>
                 
                 <div class="control-group">    
                     <label class="control-label" for="anneeTdf">Année de participation</label>
                     <div class="controls">
-                        <select>
-                            <?php for ($i=1900 ; $i<=date('Y') ; $i++): ?>
-                                <option><?php echo $i; ?></option>
-                            <?php endfor; ?>
+                        <select name="anneeTdf" size="1">
+                            <?php
+                                $req = $conn->query("select ANNEE from TDF_ANNEE order by ANNEE");
+                                while ($donnees = $req->fetch()) {
+                                    echo '<option value="'.$donnees['ANNEE'].'">' .$donnees['ANNEE']. '</option>';
+                                }
+                            ?>
                         </select>
                     </div>
                 </div>

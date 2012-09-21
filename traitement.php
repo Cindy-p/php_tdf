@@ -38,7 +38,7 @@ if(isset($_POST['prenomCoureur'])){
 	else {
     $_POST['prenomCoureur'] = traitementAccentsP($_POST['prenomCoureur']);
     $_POST['prenomCoureur'] = ucfirst(strtolower($_POST['prenomCoureur']));
-    //echo $_POST['prenomCoureur']."<br />";
+    echo $_POST['prenomCoureur']."<br />";
   }
 }
 
