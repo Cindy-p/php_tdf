@@ -1,7 +1,6 @@
 <?php
 //include("connexion.php");
 //include("traitement_connexion.php");
-//include("formulaire.php");
 
 // traitement des données entrées -----------------------------------------------------------------------------------------------------------------------------
 
@@ -82,6 +81,10 @@ function traitementAccents($chaine){
 
 function traitementAccentsP($chaine){
 	
+	$tab_chaine = str_split($chaine);
+	$tab_chaine[0] = traitementAccents($tab_chaine[0]);
+	$chaine = implode( "", $tab_chaine);
+	
 	if(preg_match("#[ÀáÁÂãÃÄåÅ]#", $chaine)){
 		if(preg_match("#[áÁåÅãÃ]#", $chaine))
 			$chaine = preg_replace("#[áÁåÅãÃ]#", "a", $chaine);
@@ -146,6 +149,14 @@ function traitementAccentsP($chaine){
 		
 	return $chaine;
 }
+
+// requête permettant de récupérer la liste des pays-----------------------------------------------
+/*$req = $conn->query("select * from TDF_PAYS order by NOM");
+while ($donnees = $req->fetch()) {
+    
+}*/
+
+
 
 // requête d'insertion des coureurs ---------------------------------------------------------------------------------------------------------------------------
 // NE PAS SUPPRIMER !! 

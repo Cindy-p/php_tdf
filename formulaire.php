@@ -26,7 +26,7 @@
                   </div>
                 <?php } ?>
                 
-                <?php if($isValidNom){ ?>            
+                <?php if($isValidPrenom){ ?>            
                     <div class="control-group">    
                         <label class="control-label" for="prenomCoureur">Prénom</label>
                         <div class="controls">
