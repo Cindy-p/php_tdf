@@ -5,62 +5,34 @@
 //--------------- NOM COUREUR ---------------
 
 if(isset($_POST['nomCoureur'])){
-	$_POST['nomCoureur'] = htmlspecialchars($_POST['nomCoureur']);
-	//echo $_POST['nomCoureur']."<br />";
+	$nomCoureur = htmlspecialchars($_POST['nomCoureur']); // on récupère ce qui a été tapé dans la case nomCoureur
   
-	if (preg_match("#^['| |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $_POST['nomCoureur'])){
-		//echo "nom non valide"."<br />";
-		//echo "veuillez retaper un nom valide"."<br />";
+	if (preg_match("#^['| |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $nomCoureur)){
         $isValidNom = false;
-		//exit;
 	}
 	else {
-        $_POST['nomCoureur'] = traitementAccents($_POST['nomCoureur']);
-        $_POST['nomCoureur'] = strtoupper($_POST['nomCoureur']);
-        echo $_POST['nomCoureur']."<br />";
-  }
+        $nomCoureur = traitementAccents($nomCoureur);
+        $nomCoureur = strtoupper($nomCoureur);
+        $isValidNom = true;
+        //echo "$nomCoureur <br />";
+    }
 }
 
 //--------------- PRENOM COUREUR ---------------
 
 if(isset($_POST['prenomCoureur'])){
-	$_POST['prenomCoureur'] = htmlspecialchars($_POST['prenomCoureur']);
-	//echo $_POST['prenomCoureur']."<br />";
+	$prenomCoureur = htmlspecialchars($_POST['prenomCoureur']);
 	
-	if(preg_match("#^['| |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $_POST['prenomCoureur'])){
-		//echo "prenom non valide"."<br />";
-		//echo "veuillez retaper un prenom valide"."<br />";
+	if(preg_match("#^['| |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $prenomCoureur)){
         $isValidPrenom = false;
-		//exit;
 	}
 	else {
-    $_POST['prenomCoureur'] = traitementAccentsP($_POST['prenomCoureur']);
-    $_POST['prenomCoureur'] = ucfirst(strtolower($_POST['prenomCoureur']));
-    echo $_POST['prenomCoureur']."<br />";
+        $prenomCoureur = traitementAccentsP($prenomCoureur);
+        $prenomCoureur = ucfirst(strtolower($prenomCoureur));
+        $isValidPrenom = true;
+        //echo "$prenomCoureur <br />";
   }
 }
-
-//--------------- ANNEE NAISSANCE --------------- <!-- modif -->
-if (isset($_POST['anneeNaissance']))
-    echo $_POST['anneeNaissance']."<br />";
-
-
-//--------------- PAYS --------------- <!-- modif -->
-if (isset($_POST['nomPays']))
-    echo $_POST['nomPays']."<br />";
-
-//--------------- ANNEE TOUR DE FRANCE --------------- <!-- modif -->
-if (isset($_POST['anneeTdf']))
-    echo $_POST['anneeTdf']."<br />";
-
-//--------------- CHAMPS HIDDEN --------------- <!-- modif -->
-
-if (isset($_POST['date_insert']))
-    echo $_POST['date_insert']."<br />";
-
-if (isset($_POST['compte_oracle']))
-    echo $_POST['compte_oracle']."<br />";
-
 
 //--------------- FONCTIONS DE TRAITEMENT ---------------
 
@@ -170,35 +142,17 @@ function traitementAccentsP($chaine){
 	return $chaine;
 }
 
-// requête permettant de récupérer la liste des pays-----------------------------------------------
-/*$req = $conn->query("select * from TDF_PAYS order by NOM");
-while ($donnees = $req->fetch()) {
+// Confirmation ---------------------------------------------------------
+
+if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValidPrenom) and
+    isset($_POST['nomPays']) and isset($_POST['date_insert']) and isset($_POST['compte_oracle'])) {
+    echo "Nom : $nomCoureur <br />";
+    echo "Prénom : $prenomCoureur <br />";
+    if (empty($_POST['anneeNaissance']))
+        echo "Année de naissance : NI <br />";
+    else
+        echo "Année de naissance : ".$_POST['anneeNaissance'];
     
-}*/
-
-
-
-// requête d'insertion des coureurs ---------------------------------------------------------------------------------------------------------------------------
-// NE PAS SUPPRIMER !! 
-
-/*
-$req1 = $conn->query("select max(N_COUREUR)+5 as NUM from tdf_coureur_bidon");
-$num = $req1->fetch(); //fetch() -> renvoie un tableau 
-echo $num['NUM']."<br />"; //on utilise NUM, l'identifiant de la colonne dans laquelle est stockée le résultat de la requête (s'il n'y en a qu'un).
-
-$req = $conn->prepare("insert into tdf_coureur_bidon (N_COUREUR, NOM, PRENOM, ANNEE_NAISSANCE, CODE_TDF, ANNEE_TDF) values (:num_unique, :n, :p, :an, :ctdf, :atdf)")
-        or die(print_r($conn->errorInfo()));
-        
-if (isset($_POST['nomCoureur']) and isset($_POST['prenomCoureur']) and isset($_POST['anneeNaissance']) and isset($_POST['codeTdf']) and isset($_POST['anneeTdf'])) {
-    $req->execute(array(
-        'num_unique' => $num['NUM'],
-        'n' => $_POST['nomCoureur'],
-        'p' => $_POST['prenomCoureur'],
-        'an' => $_POST['anneeNaissance'],
-        'ctdf' => $_POST['codeTdf'],
-        'atdf' => $_POST['anneeTdf'] 
-    ));
-} 
-*/
+}    
 
 ?>
