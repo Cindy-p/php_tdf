@@ -1,6 +1,4 @@
 <?php
-//include("connexion.php");
-//include("traitement_connexion.php");
 
 // traitement des données entrées -----------------------------------------------------------------------------------------------------------------------------
 
@@ -19,7 +17,7 @@ if(isset($_POST['nomCoureur'])){
 	else {
         $_POST['nomCoureur'] = traitementAccents($_POST['nomCoureur']);
         $_POST['nomCoureur'] = strtoupper($_POST['nomCoureur']);
-        //echo $_POST['nomCoureur']."<br />";
+        echo $_POST['nomCoureur']."<br />";
   }
 }
 
@@ -41,6 +39,28 @@ if(isset($_POST['prenomCoureur'])){
     echo $_POST['prenomCoureur']."<br />";
   }
 }
+
+//--------------- ANNEE NAISSANCE --------------- <!-- modif -->
+if (isset($_POST['anneeNaissance']))
+    echo $_POST['anneeNaissance']."<br />";
+
+
+//--------------- PAYS --------------- <!-- modif -->
+if (isset($_POST['nomPays']))
+    echo $_POST['nomPays']."<br />";
+
+//--------------- ANNEE TOUR DE FRANCE --------------- <!-- modif -->
+if (isset($_POST['anneeTdf']))
+    echo $_POST['anneeTdf']."<br />";
+
+//--------------- CHAMPS HIDDEN --------------- <!-- modif -->
+
+if (isset($_POST['date_insert']))
+    echo $_POST['date_insert']."<br />";
+
+if (isset($_POST['compte_oracle']))
+    echo $_POST['compte_oracle']."<br />";
+
 
 //--------------- FONCTIONS DE TRAITEMENT ---------------
 
