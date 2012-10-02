@@ -207,11 +207,22 @@ function traitementAccentsP($chaine){
     isset($_POST['nomPays']) and isset($_POST['date_insert']) and isset($_POST['compte_oracle'])) {
     echo "Nom : $nomCoureur <br />";
     echo "Prénom : $prenomCoureur <br />";
-    if (empty($_POST['anneeNaissance']))
-        echo "Année de naissance : NI <br />";
-    else
-        echo "Année de naissance : ".$_POST['anneeNaissance'];
     
+    if (empty($_POST['anneeNaissance']))
+        echo "Année de naissance : NC <br />";
+    else
+        echo "Année de naissance : ".$_POST['anneeNaissance']."<br />";
+        
+    echo "Pays : " . $_POST['nomPays'] ."<br />";
+    
+    if (empty($_POST['anneeTdf']))
+        echo "Année de participation : NC <br />";
+    else
+        echo "Année de participation : ".$_POST['anneeTdf']."<br />";
+        
+    echo "Date d'insertion : ".$_POST['date_insert']."<br />";
+    
+    echo "Compte Oracle : ".$_POST['compte_oracle']."<br />";
 }    
 
 ?>

@@ -31,14 +31,14 @@
                   <div class="control-group">    
                       <label class="control-label" for="nomCoureur">Nom*</label>
                       <div class="controls">
-                          <input type="text" name="nomCoureur" id="nomCoureur" maxlength = "30" placeholder="Nom" value="<?php verifRempli('nomCoureur'); ?>" maxlength="30" <!-- required-->> 
+                          <input type="text" name="nomCoureur" id="nomCoureur" maxlength = "30" placeholder="Nom" value="<?php verifRempli('nomCoureur'); ?>" maxlength="30" required> 
                       </div>
                   </div>
                 <?php }else{ ?>
                   <div class="control-group error">
                       <label class="control-label" for="nomCoureur">Nom*</label>
                       <div class="controls">
-                          <input type="text" name="nomCoureur" id="nomCoureur" maxlength = "30" <!-- required-->>
+                          <input type="text" name="nomCoureur" id="nomCoureur" maxlength = "30" required>
                           <span class="help-inline">Veuillez entrer un nom valide</span>
                       </div>
                   </div>
@@ -50,14 +50,14 @@
                     <div class="control-group">    
                         <label class="control-label" for="prenomCoureur">Prénom*</label>
                         <div class="controls">
-                            <input type="text" name="prenomCoureur" id="prenomCoureur" placeholder="Prénom" value="<?php verifRempli('prenomCoureur'); ?>" maxlength="30" <!-- required-->>
+                            <input type="text" name="prenomCoureur" id="prenomCoureur" placeholder="Prénom" value="<?php verifRempli('prenomCoureur'); ?>" maxlength="30" required>
                         </div>
                     </div>
                 <?php }else{ ?>
                   <div class="control-group error">
                       <label class="control-label" for="prenomCourreur">Prénom*</label>
                       <div class="controls">
-                          <input type="text" name="prenomCoureur" id="prenomCoureur" maxlength = "30" <!-- required-->>
+                          <input type="text" name="prenomCoureur" id="prenomCoureur" maxlength = "30" required>
                           <span class="help-inline">Veuillez entrer un prénom valide</span>
                       </div>
                   </div>
@@ -82,10 +82,10 @@
                 <div class="control-group">
                     <label class="control-label" for="nomPays"> Pays* </label>
                     <div class="controls">
-                        <select name="nomPays" id = "nomPays" size="1" <!-- required-->>
+                        <select name="nomPays" id = "nomPays" size="1" required>
                             <option><?php echo ''; ?></option>
 							<?php
-								$conn = new PDO("oci:dbname = xe", "steven", "Nokia5530");
+								$conn = new PDO("oci:dbname = xe", "cindy.perat", "Peratlccsl61");
                                 $req = $conn->query("select NOM from TDF_PAYS order by NOM");
                                 while ($donnees = $req->fetch()) { ?>
                                     <option value="<?php echo $donnees['NOM']; ?>" <?php verifSelect('nomPays', $donnees['NOM']); ?> > <?php echo $donnees['NOM']; ?> </option>
@@ -102,7 +102,7 @@
                         <select name="anneeTdf" id = "anneeTdf" size="1">
                             <option><?php echo ''; ?></option>
 							<?php
-								$conn = new PDO("oci:dbname = xe", "steven", "Nokia5530");
+								$conn = new PDO("oci:dbname = xe", "cindy.perat", "Peratlccsl61");
                                 $req = $conn->query("select ANNEE from TDF_ANNEE order by ANNEE");
                                 while ($donnees = $req->fetch()) { ?>
                                     <option value="<?php echo $donnees['ANNEE']; ?>" <?php verifSelect('anneeTdf', $donnees['ANNEE']); ?> > <?php echo $donnees['ANNEE']; ?> </option>
@@ -114,7 +114,7 @@
 			<!-- COMPTE ORACLE ET DATE INSERT ----------------------------------------------------  -->
 			
 				<input type = "hidden" name = "date_insert" value = "<?php echo date("d/m/y"); ?>" >
-				<input type = "hidden" name = "compte_oracle" value = "steven" >
+				<input type = "hidden" name = "compte_oracle" value = "cindy.perat" >
 				
 			<!-- BOUTON VALIDER ----------------------------------------------------  -->	
 				

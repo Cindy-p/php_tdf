@@ -9,6 +9,7 @@
         $isValidPrenom = true;
     //    include("traitement_connexion.php");
         include("traitement.php");
+        include("requetes.php");
         include("formulaire.php");
     ?>
     </body>
