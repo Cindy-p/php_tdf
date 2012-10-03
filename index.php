@@ -13,9 +13,13 @@
 		$conn = new PDO("oci:dbname = xe", "steven", "Nokia5530");
 		
     //    include("traitement_connexion.php");
-        include("traitement.php");
+    //    include("traitement.php");
+		include("traitement_directeur.php");
+		
     //    include("requetes.php");
-        include("formulaire.php");
+	
+    //    include("formulaire.php");
+		include("formulaire_directeur.php");
     ?>
     </body>
 </html>
