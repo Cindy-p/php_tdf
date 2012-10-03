@@ -108,12 +108,7 @@
                         </select>
                     </div>
                 </div>
-            
-			<!-- COMPTE ORACLE ET DATE INSERT ----------------------------------------------------  -->
-			
-				<input type = "hidden" name = "date_insert" value = "<?php echo date("d/m/y"); ?>" >
-				<input type = "hidden" name = "compte_oracle" value = "cindy.perat" >
-				
+            		
 			<!-- BOUTON VALIDER ----------------------------------------------------  -->	
 				
                 <div class="controls">

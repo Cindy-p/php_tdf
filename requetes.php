@@ -18,25 +18,36 @@ if (isset($_POST['nomPays'])) {
     $req2->closeCursor();
 }
 
+/*$req3 = $conn->query("select sysdate as date from dual")
+        or die(print_r($conn->errorInfo()));
+$date = $req3->fetch();
+echo $date['date']."<br />";
+$req3->closeCursor();*/
+
+$req4 = $conn->query("select sys_context('USERENV','SESSION_USER') as \"user\" from dual")
+        or die(print_r($conn->errorInfo()));
+$user = $req4->fetch();
+echo $user['user'];
+$req4->closeCursor();
         
-$req3 = $conn->prepare("insert into tdf_coureur_bidon (N_COUREUR, NOM, PRENOM, ANNEE_NAISSANCE, CODE_TDF, ANNEE_TDF, DATE_INSERT, COMPTE_ORACLE) values (:num_unique, :n, :p, :an, :ctdf, :atdf, :date, :compte)")
+$req5 = $conn->prepare("insert into tdf_coureur_bidon (N_COUREUR, NOM, PRENOM, ANNEE_NAISSANCE, CODE_TDF, ANNEE_TDF, DATE_INSERT, COMPTE_ORACLE) values (:num_unique, :n, :p, :an, :ctdf, :atdf, sysdate, :compte)")
         or die(print_r($conn->errorInfo()));
         
 if (isset($nomCoureur) and isset($prenomCoureur) and isset($_POST['nomPays']) and isset($_POST['date_insert']) and isset($_POST['compte_oracle'])) {
-    $req3->execute(array(
+    $req5->execute(array(
         'num_unique' => $num['NUM'],
         'n' => $nomCoureur,
         'p' => $prenomCoureur,
         'an' => $_POST['anneeNaissance'],
         'ctdf' => $code_tdf['CODE_TDF'],
         'atdf' => $_POST['anneeTdf'],
-        'date' => $_POST['date_insert'], // pb ici, enpêche l'exécution du INSERT INTO
-        'compte' => $_POST['compte_oracle']
+        //'date' => $date['date'], // pb ici, enpêche l'exécution du INSERT INTO
+        'compte' => $user['user']
     ));
 }
-//$req3->closeCursor();
+//$req5->closeCursor();
 
-$affichage = $conn->query("select * from tdf_coureur_bidon where N_COUREUR = 4750");
+$affichage = $conn->query("select * from tdf_coureur_bidon where N_COUREUR = 4755");
 $donnees = $affichage->fetch();
 echo $donnees['N_COUREUR'] . " " . $donnees['NOM'] . " " . $donnees['PRENOM'] . " " . $donnees['ANNEE_NAISSANCE'] . " " . $donnees['CODE_TDF'] . " " . $donnees['ANNEE_TDF'] . " " . $donnees['DATE_INSERT'] . " " . $donnees['COMPTE_ORACLE'];
 $affichage->closeCursor();

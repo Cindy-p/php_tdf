@@ -229,10 +229,6 @@ function traitementAccentsP($chaine){
         echo "Année de participation : NC <br />";
     else
         echo "Année de participation : ".$_POST['anneeTdf']."<br />";
-        
-    echo "Date d'insertion : ".$_POST['date_insert']."<br />";
-    
-    echo "Compte Oracle : ".$_POST['compte_oracle']."<br />";
 }    
 
 ?>
