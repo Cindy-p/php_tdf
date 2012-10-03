@@ -3,8 +3,6 @@
 // requête d'insertion des coureurs ---------------------------------------------------------------------------------------------------------------------------
 // NE PAS SUPPRIMER !! 
 
-$conn = new PDO("oci:dbname = xe", "cindy.perat", "Peratlccsl61");
-
 $req1 = $conn->query("select max(N_COUREUR)+5 as NUM from tdf_coureur_bidon")
         or die(print_r($conn->errorInfo()));
 $num = $req1->fetch(); //fetch() -> renvoie un tableau 

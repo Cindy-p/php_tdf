@@ -7,24 +7,32 @@
 if(isset($_POST['nomCoureur'])){
 	$nomCoureur = htmlspecialchars($_POST['nomCoureur']);
   
-	if (preg_match("#^['| |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $nomCoureur)){
-        $isValidNom = false;
+	if(preg_match("#^.{0,1}$#", $nomCoureur)){
+		$typeErrorNom = "Le nom saisi est trop court";
+		$isValidNom = false;
+	}
+	else if (preg_match("#^[ |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $nomCoureur)){
+        $typeErrorNom = "Le nom saisi contient des caractères interdits";
+		$isValidNom = false;
 	}
 	else {
         $nomCoureur = traitementAccents($nomCoureur);
         $nomCoureur = strtoupper($nomCoureur);
 		
-		$nomCoureur = suppr_inutile(" ", $nomCoureur); //modifié
-		$nomCoureur = suppr_inutile("-", $nomCoureur); //modifié
-		$nomCoureur = suppr_inutile("'", $nomCoureur); //modifié
+		$nomCoureur = suppr_inutile(" ", $nomCoureur);
+		$nomCoureur = suppr_inutile("-", $nomCoureur); 
+		$nomCoureur = suppr_inutile("'", $nomCoureur);
 		
 		if(preg_match("#^[a-zA-Z\' -]{2,}$#", $nomCoureur)){
 			$isValidNom = true;
 		}
 		else{
+			$typeErrorNom = "Le nom saisi contient des caractères interdits";
 			$isValidNom = false;
 		}
-    //  echo $nomCoureur."<br />";
+		
+	if($isValidNom)
+      echo $nomCoureur."<br />";
   }
 }
 
@@ -33,38 +41,43 @@ if(isset($_POST['nomCoureur'])){
 if(isset($_POST['prenomCoureur'])){
 	$prenomCoureur = htmlspecialchars($_POST['prenomCoureur']);
 	
-	if(preg_match("#^[ |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{2,}|[']{2,}|[-| ]$#", $prenomCoureur)){
-        $isValidPrenom = false;
+	if(preg_match("#^.{0,1}$#", $prenomCoureur)){
+		$typeErrorPrenom = "Le prénom saisi est trop court";
+		$isValidPrenom = false;
+	}
+	else if(preg_match("#^[ |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{2,}|[']{2,}|[-| ]$#", $prenomCoureur)){
+        $typeErrorPrenom = "Le prénom saisi contient des caractères interdits";
+		$isValidPrenom = false;
 	}
 	else {
+			
 		$prenomCoureur = traitementAccentsP($prenomCoureur);
 		
 		if(preg_match("#^[a-zA-Zàâäéèêëîïôöùûüÿç\' -]{2,}$#", $prenomCoureur)){
 			$isValidPrenom = true;
 		}
 		else{
+			$typeErrorPrenom = "Le nom saisi contient des caractères interdits";
 			$isValidPrenom = false;
 		}
 	
-	//	echo $prenomCoureur."<br />";
+	if($isValidPrenom)
+		echo $prenomCoureur."<br />";
   }
 }
 
 //--------------- FONCTIONS DE TRAITEMENT ---------------
 
-//modif envoyée ---------------------------------------------------------------------------------
 function suppr_inutile($separateur, $chaine){
 	
 	if(preg_match("#( ){1,}$separateur( ){1,}|( ){1,}$separateur|$separateur( ){1,}#", $chaine))
 		$chaine = preg_replace("#( ){1,}$separateur( ){1,}|( ){1,}$separateur|$separateur( ){1,}#", "$separateur", $chaine);
 	
-	else if(preg_match("#('){1,}$separateur('){1,}|('){1,}$separateur|$separateur('){1,}#", $chaine))
-		$chaine += "ß";
+	else if(preg_match("#('){1,}-('){1,}|('){1,}-|-('){1,}#", $chaine))
+		$chaine ="";
 	
 	return $chaine;
 }
-
-//modif envoyée ---------------------------------------------------------------------------------
 
 function traitementAccents($chaine){
 	
@@ -100,7 +113,6 @@ function traitementAccents($chaine){
 		
 	return $chaine;
 }
-// modif à envoyer --------------------------------------------------------------------------------
 
 function prenomCompose($separateur, $chaine){
 		
@@ -133,8 +145,6 @@ function traitementAccentsP($chaine){
 	$chaine = prenomCompose(" ", $chaine); 
 	$chaine = prenomCompose("-", $chaine); 
 	$chaine = prenomCompose("'", $chaine); 	
-
-//modif à envoyer ---------------------------------------------------------------------------------
 	
 	if(preg_match("#[ÀáÁÂãÃÄåÅ]#", $chaine)){
 		if(preg_match("#[áÁåÅãÃ]#", $chaine))

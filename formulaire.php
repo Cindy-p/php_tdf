@@ -39,7 +39,7 @@
                       <label class="control-label" for="nomCoureur">Nom*</label>
                       <div class="controls">
                           <input type="text" name="nomCoureur" id="nomCoureur" maxlength = "30" required>
-                          <span class="help-inline">Veuillez entrer un nom valide</span>
+                          <span class="help-inline"> <?php echo $typeErrorNom; ?> </span>
                       </div>
                   </div>
                 <?php } ?>
@@ -58,7 +58,7 @@
                       <label class="control-label" for="prenomCourreur">Prénom*</label>
                       <div class="controls">
                           <input type="text" name="prenomCoureur" id="prenomCoureur" maxlength = "30" required>
-                          <span class="help-inline">Veuillez entrer un prénom valide</span>
+                          <span class="help-inline"> <?php echo $typeErrorPrenom; ?> </span>
                       </div>
                   </div>
                 <?php } ?>
@@ -85,7 +85,6 @@
                         <select name="nomPays" id = "nomPays" size="1" required>
                             <option><?php echo ''; ?></option>
 							<?php
-								$conn = new PDO("oci:dbname = xe", "cindy.perat", "Peratlccsl61");
                                 $req = $conn->query("select NOM from TDF_PAYS order by NOM");
                                 while ($donnees = $req->fetch()) { ?>
                                     <option value="<?php echo $donnees['NOM']; ?>" <?php verifSelect('nomPays', $donnees['NOM']); ?> > <?php echo $donnees['NOM']; ?> </option>
@@ -102,7 +101,6 @@
                         <select name="anneeTdf" id = "anneeTdf" size="1">
                             <option><?php echo ''; ?></option>
 							<?php
-								$conn = new PDO("oci:dbname = xe", "cindy.perat", "Peratlccsl61");
                                 $req = $conn->query("select ANNEE from TDF_ANNEE order by ANNEE");
                                 while ($donnees = $req->fetch()) { ?>
                                     <option value="<?php echo $donnees['ANNEE']; ?>" <?php verifSelect('anneeTdf', $donnees['ANNEE']); ?> > <?php echo $donnees['ANNEE']; ?> </option>
