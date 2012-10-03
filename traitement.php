@@ -214,7 +214,7 @@ function traitementAccentsP($chaine){
 //--------------- CONFIRMATION -----------------
 
  if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValidPrenom) and
-    isset($_POST['nomPays']) and isset($_POST['date_insert']) and isset($_POST['compte_oracle'])) {
+    isset($_POST['nomPays'])) {
     echo "Nom : $nomCoureur <br />";
     echo "Prénom : $prenomCoureur <br />";
     

@@ -10,16 +10,16 @@
 		$typeErrorNom = "";
 		$typeErrorPrenom = "";
 		
-		$conn = new PDO("oci:dbname = xe", "steven", "Nokia5530");
+		$conn = new PDO("oci:dbname = xe", "cindy.perat", "Peratlccsl61");
 		
     //    include("traitement_connexion.php");
-    //    include("traitement.php");
-		include("traitement_directeur.php");
+        include("traitement.php");
+	//	include("traitement_directeur.php");
 		
-    //    include("requetes.php");
+        include("requetes.php");
 	
-    //    include("formulaire.php");
-		include("formulaire_directeur.php");
+        include("formulaire.php");
+	//	include("formulaire_directeur.php");
     ?>
     </body>
 </html>

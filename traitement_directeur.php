@@ -213,9 +213,9 @@ function traitementAccentsP($chaine){
 
 //--------------- CONFIRMATION -----------------
 
- if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValidPrenom)) {
-    echo "Nom : $nomCoureur <br />";
-    echo "Prénom : $prenomCoureur <br />";
+ if ((isset($nomDirecteur) and $isValidNom) and (isset($prenomDirecteur) and $isValidPrenom)) {
+    echo "Nom : $nomDirecteur <br />";
+    echo "Prénom : $prenomDirecteur <br />";
 }
 
 ?>
