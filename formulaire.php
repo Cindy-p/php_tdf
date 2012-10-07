@@ -21,6 +21,7 @@
                 }
             }
         ?>
+        
         <div class="container">
             <form class="form-horizontal" action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="application/x-www-form-urlencoded">
                 <legend>Insertion dans la table coureur</legend>

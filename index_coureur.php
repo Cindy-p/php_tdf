@@ -8,33 +8,24 @@
             <div class="navbar-inner">
                 <a class="brand" href="index.php">Tour de France</a>
                 <ul class="nav">
-                    <li class="active"><a href="#">Accueil</a></li>
-                    <li><a href="index_coureur.php">Coureurs</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li class="active"><a href="index_coureur.php">Coureurs</a></li>
                     <li><a href="#">Directeurs</a></li>
                 </ul>
             </div>
         </div>
-        <div class="container" style="margin-top:20px;">
-            <div class="hero-unit">
-                <h2>Bienvenue sur le site du Tour !</h2>
-            </div>
-            
-            <!--
+        <div class="container" style="margin-top:30px;">
+            <?php
             $isValidNom = true;
             $isValidPrenom = true;
             $typeErrorNom = "";
             $typeErrorPrenom = "";    
             $conn = new PDO("oci:dbname = xe", "cindy.perat", "Peratlccsl61");
             
-            //    include("traitement_connexion.php");
-                include("traitement.php");
-            //	include("traitement_directeur.php");
-                
-                include("requetes.php");
-            
-                include("formulaire.php");
-            //	include("formulaire_directeur.php");*/
-            -->
+            include("traitement.php");    
+            include("requetes.php");
+            include("formulaire.php");
+            ?>
         </div>
     </body>
 </html>

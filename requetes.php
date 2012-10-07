@@ -6,7 +6,7 @@
 $req1 = $conn->query("select max(N_COUREUR)+5 as NUM from tdf_coureur_bidon")
         or die(print_r($conn->errorInfo()));
 $num = $req1->fetch(); //fetch() -> renvoie un tableau 
-echo "N° généré pour la prochaine entrée : ".$num['NUM']."<br />"; //on utilise NUM, l'identifiant de la colonne dans laquelle est stockée le résultat de la requête (s'il n'y en a qu'un).
+//echo "N° généré pour la prochaine entrée : ".$num['NUM']."<br />"; //on utilise NUM, l'identifiant de la colonne dans laquelle est stockée le résultat de la requête (s'il n'y en a qu'un).
 $req1->closeCursor();
 
 if (isset($_POST['nomPays'])) {
@@ -34,8 +34,8 @@ $req5 = $conn->prepare("insert into tdf_coureur_bidon (N_COUREUR, NOM, PRENOM, A
                        values (:num_unique, :n, :p, :an, :ctdf, :atdf, to_char(sysdate, 'DD-MM-YY'), :compte)")
         or die(print_r($conn->errorInfo()));
         
-if (isset($nomCoureur) and isset($prenomCoureur)) {
-    $req5->execute(array(
+if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValidPrenom) and isset($_POST['nomPays'])) {
+    if ($req5->execute(array(
         'num_unique' => $num['NUM'],
         'n' => $nomCoureur,
         'p' => $prenomCoureur,
@@ -43,13 +43,42 @@ if (isset($nomCoureur) and isset($prenomCoureur)) {
         'ctdf' => $code_tdf['CODE_TDF'],
         'atdf' => $_POST['anneeTdf'],
         'compte' => $user['user']
-    ));
+    )) == true)
+        echo "<div class=\"alert alert-success\">Le coureur a bien été inséré.</div>";
+    else
+        echo "<div class=\"alert alert-error\">L'enregistrement n'a pas été effectué.</div>";
 }
 $req5->closeCursor();
 
 $affichage = $conn->query("select * from tdf_coureur_bidon where N_COUREUR = (select max(N_COUREUR) from tdf_coureur_bidon)");
 $donnees = $affichage->fetch();
-echo $donnees['N_COUREUR'] . " " . $donnees['NOM'] . " " . $donnees['PRENOM'] . " " . $donnees['ANNEE_NAISSANCE'] . " " . $donnees['CODE_TDF'] . " " . $donnees['ANNEE_TDF'] . " " . $donnees['DATE_INSERT'] . " " . $donnees['COMPTE_ORACLE'];
+echo "<table class=\"table\">";
+echo "<thead>";
+echo "<tr>";
+echo "<th>N°</th>";
+echo "<th>Nom</th>";
+echo "<th>Prénom</th>";
+echo "<th>Année de naissance</th>";
+echo "<th>Pays</th>";
+echo "<th>Année de participation</th>";
+echo "<th>Date d'insertion</th>";
+echo "<th>Compte Oracle</th>";
+echo "</tr>";
+echo "</thead>";
+
+echo "<tbody>";
+echo "<tr>";
+echo "<td>".$donnees['N_COUREUR']."</td>";
+echo "<td>".$donnees['NOM']."</td>";
+echo "<td>".$donnees['PRENOM']."</td>";
+echo "<td>".$donnees['ANNEE_NAISSANCE']."</td>";
+echo "<td>".$donnees['CODE_TDF']."</td>";
+echo "<td>".$donnees['ANNEE_TDF']."</td>";
+echo "<td>".$donnees['DATE_INSERT']."</td>";
+echo "<td>".$donnees['COMPTE_ORACLE']."</td>";
+echo "</tr>";
+echo "</tbody>";
+echo "</table>";
 $affichage->closeCursor();
 
 

@@ -31,8 +31,8 @@ if(isset($_POST['nomCoureur'])){
 			$isValidNom = false;
 		}
 		
-	if($isValidNom)
-      echo $nomCoureur."<br />";
+	/*if($isValidNom)
+      echo $nomCoureur."<br />";*/
   }
 }
 
@@ -61,8 +61,8 @@ if(isset($_POST['prenomCoureur'])){
 			$isValidPrenom = false;
 		}
 	
-	if($isValidPrenom)
-		echo $prenomCoureur."<br />";
+	/*if($isValidPrenom)
+		echo $prenomCoureur."<br />";*/
   }
 }
 
@@ -213,22 +213,31 @@ function traitementAccentsP($chaine){
 
 //--------------- CONFIRMATION -----------------
 
- if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValidPrenom) and
-    isset($_POST['nomPays'])) {
-    echo "Nom : $nomCoureur <br />";
-    echo "Prénom : $prenomCoureur <br />";
-    
-    if (empty($_POST['anneeNaissance']))
-        echo "Année de naissance : NC <br />";
-    else
-        echo "Année de naissance : ".$_POST['anneeNaissance']."<br />";
-        
-    echo "Pays : " . $_POST['nomPays'] ."<br />";
-    
-    if (empty($_POST['anneeTdf']))
-        echo "Année de participation : NC <br />";
-    else
-        echo "Année de participation : ".$_POST['anneeTdf']."<br />";
-}    
-
-?>
+if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValidPrenom) and isset($_POST['nomPays'])) { ?>    
+    <dl class="dl-horizontal">
+        <dt>Nom</dt>
+        <dd><?php echo $nomCoureur; ?></dd>
+        <dt>Prénom</dt>
+        <dd><?php echo $prenomCoureur; ?></dd>
+        <dt>Année de naissance</dt>
+        <dd>
+        <?php
+            if (empty($_POST['anneeNaissance']))
+                echo "NC";
+            else
+                echo $_POST['anneeNaissance'];
+        ?>
+        </dd>
+        <dt>Pays</dt>
+        <dd><?php echo $_POST['nomPays']; ?></dd>
+        <dt>Année de participation</dt>
+        <dd>
+        <?php
+            if (empty($_POST['anneeTdf']))
+                echo "NC";
+            else
+                echo $_POST['anneeTdf'];
+        ?>
+        </dd>
+    </dl>
+<?php } ?>
