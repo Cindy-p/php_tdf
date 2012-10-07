@@ -2,7 +2,7 @@
 
 // traitement des données entrées -----------------------------------------------------------------------------------------------------------------------------
 
-//--------------- NOM COUREUR ---------------
+//--------------- NOM DIRECTEUR ---------------
 
 if(isset($_POST['nomDirecteur'])){
 	$nomDirecteur = htmlspecialchars($_POST['nomDirecteur']);
@@ -31,12 +31,12 @@ if(isset($_POST['nomDirecteur'])){
 			$isValidNom = false;
 		}
 		
-	if($isValidNom)
-      echo $nomDirecteur."<br />";
+	/*if($isValidNom)
+      echo $nomDirecteur."<br />";*/
   }
 }
 
-//--------------- PRENOM COUREUR ---------------
+//--------------- PRENOM DIRECTEUR ---------------
 
 if(isset($_POST['prenomDirecteur'])){
 	$prenomDirecteur = htmlspecialchars($_POST['prenomDirecteur']);
@@ -61,8 +61,8 @@ if(isset($_POST['prenomDirecteur'])){
 			$isValidPrenom = false;
 		}
 	
-	if($isValidPrenom)
-		echo $prenomDirecteur."<br />";
+	/*if($isValidPrenom)
+		echo $prenomDirecteur."<br />";*/
   }
 }
 
@@ -213,9 +213,11 @@ function traitementAccentsP($chaine){
 
 //--------------- CONFIRMATION -----------------
 
- if ((isset($nomDirecteur) and $isValidNom) and (isset($prenomDirecteur) and $isValidPrenom)) {
-    echo "Nom : $nomDirecteur <br />";
-    echo "Prénom : $prenomDirecteur <br />";
-}
-
-?>
+if ((isset($nomDirecteur) and $isValidNom) and (isset($prenomDirecteur) and $isValidPrenom)) { ?>
+    <dl class="dl-horizontal">
+        <dt>Nom</dt>
+        <dd><?php echo $nomDirecteur; ?></dd>
+        <dt>Prénom</dt>
+        <dd><?php echo $prenomDirecteur; ?></dd>
+    </dl>
+<?php } ?>
