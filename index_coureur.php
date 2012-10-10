@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,6 +9,7 @@
             <div class="navbar-inner">
                 <a class="brand" href="index.php">Tour de France</a>
                 <ul class="nav">
+                    <li><a href="index_connexion.php">Connexion</a></li>
                     <li><a href="index.php">Accueil</a></li>
                     <li class="active"><a href="index_coureur.php">Coureurs</a></li>
                     <li><a href="index_directeur.php">Directeurs</a></li>
@@ -19,12 +21,23 @@
             $isValidNom = true;
             $isValidPrenom = true;
             $typeErrorNom = "";
-            $typeErrorPrenom = "";    
-            $conn = new PDO("oci:dbname = xe", "cindy.perat", "Peratlccsl61");
+            $typeErrorPrenom = "";
             
-            include("traitement.php");    
-            include("requetes.php");
-            include("formulaire.php");
+            if (!isset($_SESSION['db_username']) and !isset($_SESSION['db_password'])) {
+                echo "<div class=\"alert alert-error\">Vous n'êtes pas connecté.</div>";
+            }
+            else {
+                try { // Permet de vérifier si l'id et le mpd entrés sont corrects
+                    $conn = new PDO($_SESSION['db'], $_SESSION['db_username'], $_SESSION['db_password']);
+                }
+                catch (Exception $e) {
+                    die('Erreur : ' . $e->getMessage());
+                }
+                
+                include("traitement.php");    
+                include("requetes.php");
+                include("formulaire.php");
+            }
             ?>
         </div>
     </body>
