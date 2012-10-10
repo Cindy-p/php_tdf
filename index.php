@@ -8,6 +8,7 @@
             <div class="navbar-inner">
                 <a class="brand" href="index.php">Tour de France</a>
                 <ul class="nav">
+                    <li><a href="index_connexion.php">Connexion</a></li>
                     <li class="active"><a href="#">Accueil</a></li>
                     <li><a href="index_coureur.php">Coureurs</a></li>
                     <li><a href="index_directeur.php">Directeurs</a></li>

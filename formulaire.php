@@ -32,14 +32,14 @@
                   <div class="control-group">    
                       <label class="control-label" for="nomCoureur">Nom*</label>
                       <div class="controls">
-                          <input type="text" name="nomCoureur" id="nomCoureur" maxlength = "30" placeholder="Nom" value="<?php verifRempli('nomCoureur'); ?>" maxlength="30" required> 
+                          <input type="text" name="nomCoureur" id="nomCoureur" placeholder="Nom" value="<?php verifRempli('nomCoureur'); ?>" maxlength="20" required> 
                       </div>
                   </div>
                 <?php }else{ ?>
                   <div class="control-group error">
                       <label class="control-label" for="nomCoureur">Nom*</label>
                       <div class="controls">
-                          <input type="text" name="nomCoureur" id="nomCoureur" maxlength = "30" required>
+                          <input type="text" name="nomCoureur" id="nomCoureur" maxlength = "20" required>
                           <span class="help-inline"> <?php echo $typeErrorNom; ?> </span>
                       </div>
                   </div>
@@ -51,14 +51,14 @@
                     <div class="control-group">    
                         <label class="control-label" for="prenomCoureur">Prénom*</label>
                         <div class="controls">
-                            <input type="text" name="prenomCoureur" id="prenomCoureur" placeholder="Prénom" value="<?php verifRempli('prenomCoureur'); ?>" maxlength="30" required>
+                            <input type="text" name="prenomCoureur" id="prenomCoureur" placeholder="Prénom" value="<?php verifRempli('prenomCoureur'); ?>" maxlength="20" required>
                         </div>
                     </div>
                 <?php }else{ ?>
                   <div class="control-group error">
                       <label class="control-label" for="prenomCourreur">Prénom*</label>
                       <div class="controls">
-                          <input type="text" name="prenomCoureur" id="prenomCoureur" maxlength = "30" required>
+                          <input type="text" name="prenomCoureur" id="prenomCoureur" maxlength = "20" required>
                           <span class="help-inline"> <?php echo $typeErrorPrenom; ?> </span>
                       </div>
                   </div>
