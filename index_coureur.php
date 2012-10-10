@@ -11,6 +11,7 @@
                     <li><a href="index.php">Accueil</a></li>
                     <li class="active"><a href="index_coureur.php">Coureurs</a></li>
                     <li><a href="index_directeur.php">Directeurs</a></li>
+					<li><a href="index_epreuve.php">Epreuves</a></li>
                 </ul>
             </div>
         </div>
@@ -20,7 +21,7 @@
             $isValidPrenom = true;
             $typeErrorNom = "";
             $typeErrorPrenom = "";    
-            $conn = new PDO("oci:dbname = xe", "cindy.perat", "Peratlccsl61");
+            $conn = new PDO("oci:dbname = xe", "steven", "Nokia5530");
             
             include("traitement.php");    
             include("requetes.php");

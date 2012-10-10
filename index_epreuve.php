@@ -10,12 +10,12 @@
                 <ul class="nav">
                     <li><a href="index.php">Accueil</a></li>
                     <li><a href="index_coureur.php">Coureurs</a></li>
-                    <li class="active"><a href="index_directeur.php">Directeurs</a></li>
-					<li><a href="index_epreuve.php">Epreuves</a></li>
+                    <li><a href="index_directeur.php">Directeurs</a></li>
+					<li class="active"><a href="index_epreuve.php">Epreuves</a></li>
                 </ul>
             </div>
         </div>
-        <div class="container" style="margin-top:20px;">
+        <div class="container" style="margin-top:30px;">
             <?php
             $isValidNom = true;
             $isValidPrenom = true;
@@ -23,9 +23,9 @@
             $typeErrorPrenom = "";    
             $conn = new PDO("oci:dbname = xe", "steven", "Nokia5530");
             
-            include("traitement_directeur.php");
-            include("requete_directeur.php");
-            include("formulaire_directeur.php");
+            include("traitement_epreuve.php");    
+        //    include("requetes_epreuve.php");
+            include("formulaire_epreuve.php");
             ?>
         </div>
     </body>
