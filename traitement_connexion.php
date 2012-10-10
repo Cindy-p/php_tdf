@@ -1,11 +1,6 @@
 <?php
-//session_start();
-
 $_SESSION['db'] = "oci:dbname=xe";
-if (isset($_POST['db_username']) and isset($_POST['db_password'])) {
-    //$db_username = $_POST['db_username'];
-    //$db_password = $_POST['db_password'];
-    
+if (isset($_POST['db_username']) and isset($_POST['db_password'])) {    
     $_SESSION['db_username'] = $_POST['db_username'];
     $_SESSION['db_password'] = $_POST['db_password'];
     
@@ -16,8 +11,7 @@ if (isset($_POST['db_username']) and isset($_POST['db_password'])) {
         die('Erreur : ' . $e->getMessage());
     }
     
-    echo "<div class=\"alert alert-success\">Vous êtes bien connecté à la base de données.</div>";
-    
+    echo "<div class=\"alert alert-success\">Vous êtes bien connecté à la base de données.</div>"; 
 }
 
 ?>

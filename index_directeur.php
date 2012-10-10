@@ -22,11 +22,7 @@
             $isValidNom = true;
             $isValidPrenom = true;
             $typeErrorNom = "";
-            $typeErrorPrenom = "";    
-<<<<<<< HEAD
-            $conn = new PDO("oci:dbname = xe", "steven", "Nokia5530");
-=======
->>>>>>> 4949523725c3b12157f2529ec2155a78d8976a12
+            $typeErrorPrenom = "";
             
             if (!isset($_SESSION['db_username']) and !isset($_SESSION['db_password'])) {
                 echo "<div class=\"alert alert-error\">Vous n'êtes pas connecté.</div>";

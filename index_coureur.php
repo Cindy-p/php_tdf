@@ -17,17 +17,12 @@
                 </ul>
             </div>
         </div>
-        <div class="container" style="margin-top:30px;">
+        <div class="container" style="margin-top:20px;">
             <?php
             $isValidNom = true;
             $isValidPrenom = true;
             $typeErrorNom = "";
-<<<<<<< HEAD
             $typeErrorPrenom = "";    
-            $conn = new PDO("oci:dbname = xe", "steven", "Nokia5530");
-=======
-            $typeErrorPrenom = "";
->>>>>>> 4949523725c3b12157f2529ec2155a78d8976a12
             
             if (!isset($_SESSION['db_username']) and !isset($_SESSION['db_password'])) {
                 echo "<div class=\"alert alert-error\">Vous n'êtes pas connecté.</div>";

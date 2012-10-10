@@ -13,10 +13,11 @@
                     <li><a href="index.php">Accueil</a></li>
                     <li><a href="index_coureur.php">Coureurs</a></li>
                     <li><a href="index_directeur.php">Directeurs</a></li>
+                    <li><a href="index_epreuve.php">Epreuves</a></li>
                 </ul>
             </div>
         </div>
-        <div class="container" style="margin-top:30px;">
+        <div class="container" style="margin-top:20px;">
             <?php
             if (isset($_SESSION['db_username']) and isset($_SESSION['db_password'])) {
                 echo "<div class=\"alert alert-info\">Vous êtes déjà connecté.</div>";

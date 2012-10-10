@@ -68,7 +68,7 @@
                                     <option value="<?php echo $donnees['NOM']; ?>" <?php verifSelect('paysD', $donnees['NOM']); ?> > <?php echo $donnees['NOM']; ?> </option>
                             <?php } ?>
                         </select>
-						<input type="text" name="villeD" id="villeD" maxlength = "30" placeholder="Ville de départ" value="<?php verifRempli('villeD'); ?>" maxlength="30" required> 
+						<input type="text" name="villeD" id="villeD" placeholder="Ville de départ" value="<?php verifRempli('villeD'); ?>" maxlength="30" required> 
                     </div>
                 </div>
 				
@@ -85,7 +85,7 @@
                                     <option value="<?php echo $donnees['NOM']; ?>" <?php verifSelect('paysA', $donnees['NOM']); ?> > <?php echo $donnees['NOM']; ?> </option>
                             <?php } ?>
                         </select>
-						<input type="text" name="villeA" id="villeA" maxlength = "30" placeholder="Ville d'arrivée" value="<?php verifRempli('villeA'); ?>" maxlength="30" required> 
+						<input type="text" name="villeA" id="villeA" placeholder="Ville d'arrivée" value="<?php verifRempli('villeA'); ?>" maxlength="30" required> 
                     </div>
                 </div>
 		
