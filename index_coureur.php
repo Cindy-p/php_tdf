@@ -28,16 +28,18 @@
                 echo "<div class=\"alert alert-error\">Vous n'êtes pas connecté.</div>";
             }
             else {
-                try { // Permet de vérifier si l'id et le mpd entrés sont corrects
+                try { // Permet de vérifier si l'id et le mdp entrés sont corrects
                     $conn = new PDO($_SESSION['db'], $_SESSION['db_username'], $_SESSION['db_password']);
                 }
                 catch (Exception $e) {
                     die('Erreur : ' . $e->getMessage());
                 }
                 
-                include("traitement.php");    
-                include("requetes.php");
-                include("formulaire.php");
+                include("traitement.php");
+				include("formulaire.php");
+				include("confirmation.php");
+				include("requetes.php");
+                
             }
             ?>
         </div>

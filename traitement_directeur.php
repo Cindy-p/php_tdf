@@ -12,11 +12,11 @@ if(isset($_POST['nomDirecteur'])){
 		$isValidNom = false;
 	}
 	else if (preg_match("#^[ |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{3,}|[-| ]$#", $nomDirecteur)){
-        $typeErrorNom = "Le nom saisi contient des caractères interdits";
+		$typeErrorNom = "Le nom saisi contient des caractères interdits";
 		$isValidNom = false;
 	}
 	else {
-        $nomDirecteur = traitementAccents($nomDirecteur);
+		$nomDirecteur = traitementAccents($nomDirecteur);
         $nomDirecteur = strtoupper($nomDirecteur);
 		
 		$nomDirecteur = suppr_inutile(" ", $nomDirecteur);
@@ -30,10 +30,7 @@ if(isset($_POST['nomDirecteur'])){
 			$typeErrorNom = "Le nom saisi contient des caractères interdits";
 			$isValidNom = false;
 		}
-		
-	/*if($isValidNom)
-      echo $nomDirecteur."<br />";*/
-  }
+	}
 }
 
 //--------------- PRENOM DIRECTEUR ---------------
@@ -60,10 +57,7 @@ if(isset($_POST['prenomDirecteur'])){
 			$typeErrorPrenom = "Le nom saisi contient des caractères interdits";
 			$isValidPrenom = false;
 		}
-	
-	/*if($isValidPrenom)
-		echo $prenomDirecteur."<br />";*/
-  }
+	}
 }
 
 //--------------- FONCTIONS DE TRAITEMENT ---------------
@@ -210,14 +204,3 @@ function traitementAccentsP($chaine){
 		
 	return $chaine;
 }
-
-//--------------- CONFIRMATION -----------------
-
-if ((isset($nomDirecteur) and $isValidNom) and (isset($prenomDirecteur) and $isValidPrenom)) { ?>
-    <dl class="dl-horizontal">
-        <dt>Nom</dt>
-        <dd><?php echo $nomDirecteur; ?></dd>
-        <dt>Prénom</dt>
-        <dd><?php echo $prenomDirecteur; ?></dd>
-    </dl>
-<?php } ?>

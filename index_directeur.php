@@ -34,10 +34,11 @@
                 catch (Exception $e) {
                     die('Erreur : ' . $e->getMessage());
                 }
-            
+				
                 include("traitement_directeur.php");
-                include("requete_directeur.php");
-                include("formulaire_directeur.php");
+				include("formulaire_directeur.php");
+				include("confirmation_directeur.php");
+				include("requete_directeur.php");
             }
             ?>
         </div>

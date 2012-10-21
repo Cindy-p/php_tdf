@@ -56,7 +56,7 @@
                     </div>
                 <?php }else{ ?>
                   <div class="control-group error">
-                      <label class="control-label" for="prenomCourreur">Prénom*</label>
+                      <label class="control-label" for="prenomCoureur">Prénom*</label>
                       <div class="controls">
                           <input type="text" name="prenomCoureur" id="prenomCoureur" maxlength = "20" required>
                           <span class="help-inline"> <?php echo $typeErrorPrenom; ?> </span>

@@ -20,7 +20,7 @@
         <div class="container" style="margin-top:20px;">
             <?php
             if (isset($_SESSION['db_username']) and isset($_SESSION['db_password'])) {
-                echo "<div class=\"alert alert-info\">Vous êtes déjà connecté.</div>";
+                echo "<div class=\"alert alert-info\">Vous êtes connecté en tant que ".$_SESSION['db_username'].".</div>";
             }
             else {
                 include("formulaire_connexion.php");

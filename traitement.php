@@ -213,7 +213,7 @@ function traitementAccentsP($chaine){
 
 //--------------- CONFIRMATION -----------------
 
-if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValidPrenom) and isset($_POST['nomPays'])) { ?>    
+/*if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValidPrenom) and isset($_POST['nomPays'])) { ?>    
     <dl class="dl-horizontal">
         <dt>Nom</dt>
         <dd><?php echo $nomCoureur; ?></dd>
@@ -240,4 +240,4 @@ if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValid
         ?>
         </dd>
     </dl>
-<?php } ?>
+<?php } ?>*/
