@@ -35,20 +35,14 @@
                     ?>
                     </dd>
                 </dl>
-                <?php
-                function remplirNull($n){
-                    if ($_POST[$n] == "")
-                        echo  null;
-                }
-                ?>
                 
                 <div class="alert alert-block">
                     <p>Voulez-vous vraiment ajouter ce coureur ?</p><br/>
                     <input type="hidden" name="nomCoureur" value="<?php echo $nomCoureur; ?>">
                     <input type="hidden" name="prenomCoureur" value="<?php echo $prenomCoureur; ?>">
-                    <input type="hidden" name="anneeNaissance" value="<?php remplirNull('anneeNaissance'); ?>">
+                    <input type="hidden" name="anneeNaissance" value="<?php echo $_POST['anneeNaissance']; ?>">
                     <input type="hidden" name="nomPays" value="<?php echo $_POST['nomPays']; ?>">
-                    <input type="hidden" name="anneeTdf" value="<?php remplirNull('anneeTdf'); ?>">
+                    <input type="hidden" name="anneeTdf" value="<?php echo $_POST['anneeTdf']; ?>">
                     
                     <input type="submit" name="valider" class="btn btn-warning" value="Valider"/>
                     <input type="submit" name="annuler" class="btn" value="Annuler"/>
