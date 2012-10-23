@@ -14,6 +14,7 @@
                     <li><a href="index_coureur.php">Coureurs</a></li>
                     <li><a href="index_directeur.php">Directeurs</a></li>
                     <li><a href="index_epreuve.php">Epreuves</a></li>
+                    <li><a href="index_annee.php">Années</a></li>
                 </ul>
             </div>
         </div>

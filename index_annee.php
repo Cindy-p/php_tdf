@@ -11,19 +11,15 @@
                 <ul class="nav">
                     <li><a href="index_connexion.php">Connexion</a></li>
                     <li><a href="index.php">Accueil</a></li>
-                    <li class="active"><a href="index_coureur.php">Coureurs</a></li>
+                    <li><a href="index_coureur.php">Coureurs</a></li>
                     <li><a href="index_directeur.php">Directeurs</a></li>
 					<li><a href="index_epreuve.php">Epreuves</a></li>
-					<li><a href="index_annee.php">Années</a></li>
+                    <li class="active"><a href="index_annee.php">Années</a></li>
                 </ul>
             </div>
         </div>
         <div class="container" style="margin-top:20px;">
             <?php
-            $isValidNom = true;
-            $isValidPrenom = true;
-            $typeErrorNom = "";
-            $typeErrorPrenom = "";    
             
             if (!isset($_SESSION['db_username']) and !isset($_SESSION['db_password'])) {
                 echo "<div class=\"alert alert-error\">Vous n'êtes pas connecté.</div>";
@@ -36,10 +32,9 @@
                     die('Erreur : ' . $e->getMessage());
                 }
                 
-                include("traitement.php");
-				include("formulaire.php");
-				include("confirmation.php");
-				include("requetes.php");
+				include("formulaire_annee.php");
+				include("confirmation_annee.php");
+				include("requete_annee.php");
                 
             }
             ?>
