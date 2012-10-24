@@ -71,9 +71,9 @@
                             <?php } ?>
                         </select>
 						<?php if($isValidNomD) { ?>
-						<input type="text" name="villeD" id="villeD" placeholder="Ville de départ" value="<?php verifRempli('villeD'); ?>" maxlength="30" required> 
+						<input type="text" name="villeD" id="villeD" placeholder="Ville de départ" value="<?php verifRempli('villeD'); ?>" maxlength="40" required> 
 						<?php } else { ?>
-						<input type="text" name="villeD" id="villeD" maxlength="30" required> 
+						<input type="text" name="villeD" id="villeD" maxlength="40" required> 
 						<span class="help-inline"> <?php echo $typeErrorNomD; ?> </span>
 						<?php } ?>
 					</div>
@@ -93,9 +93,9 @@
                             <?php } ?>
                         </select>
 						<?php if($isValidNomA) { ?>
-						<input type="text" name="villeA" id="villeA" placeholder="Ville d'arrivée" value="<?php verifRempli('villeA'); ?>" maxlength="30" required> 
+						<input type="text" name="villeA" id="villeA" placeholder="Ville d'arrivée" value="<?php verifRempli('villeA'); ?>" maxlength="40" required> 
 						<?php } else { ?>
-						<input type="text" name="villeA" id="villeA" maxlength="30" required> 
+						<input type="text" name="villeA" id="villeA" maxlength="40" required> 
 						<span class="help-inline"> <?php echo $typeErrorNomA; ?> </span>
 						<?php } ?>
                     </div>
@@ -139,14 +139,26 @@
 			<div class="control-group">    
 				<label class="control-label" for="catE">Type épreuve*</label>
 				<div class="controls">
-					<select name="catE" id = "catE" size="1" required>
-						<option><?php echo ''; ?></option>
-						<?php
-							$req = $conn->query("select distinct CAT_CODE, LIBELLE from TDF_CATEGORIE_EPREUVE order by CAT_CODE");
-							while ($donnees = $req->fetch()) { ?>
-								<option value="<?php echo $donnees['LIBELLE']; ?>" <?php verifSelect('catE', $donnees['LIBELLE']); ?> > <?php echo $donnees['LIBELLE']; ?> </option>
-						<?php } ?>
-                    </select>
+					<?php if($isValidTypeE) { ?>
+						<select name="catE" id = "catE" size="1" required>
+							<option><?php echo ''; ?></option>
+							<?php
+								$req = $conn->query("select distinct CAT_CODE, LIBELLE from TDF_CATEGORIE_EPREUVE order by CAT_CODE");
+								while ($donnees = $req->fetch()) { ?>
+									<option value="<?php echo $donnees['LIBELLE']; ?>" <?php verifSelect('catE', $donnees['LIBELLE']); ?> > <?php echo $donnees['LIBELLE']; ?> </option>
+							<?php } ?>
+						</select>		
+					<?php } else { ?>
+						<select name="catE" id = "catE" size="1" required>
+							<option><?php echo ''; ?></option>
+							<?php
+								$req = $conn->query("select distinct CAT_CODE, LIBELLE from TDF_CATEGORIE_EPREUVE order by CAT_CODE");
+								while ($donnees = $req->fetch()) { ?>
+									<option value="<?php echo $donnees['LIBELLE']; ?>" > <?php echo $donnees['LIBELLE']; ?> </option>
+							<?php } ?>
+						</select>
+						<span class="help-inline"> <?php echo $typeErrorTypeE; ?> </span>
+					<?php } ?>
 				</div>
             </div>
 			
@@ -167,7 +179,7 @@
 			<!-- VITESSE MOYENNE -------------------------------------------  -->
 			
 			<div class="control-group">    
-				<label class="control-label" for="moyenne">Vitesse moyenne*</label>
+				<label class="control-label" for="moyenne">Vitesse moyenne</label>
 				<div class="controls">
 					<?php if($isValidMoyenne) { ?>
 						<input type="text" name="moyenne" id="moyenne" placeholder="vitesse moyenne en km/h" value="<?php verifRempli('moyenne'); ?>" maxlength="6"> 

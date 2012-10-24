@@ -1,5 +1,6 @@
 <?php
 
+
 //--------------- DEPART ---------------
 
 if(isset($_POST['villeD'])){
@@ -144,7 +145,7 @@ if(isset($_POST['distance'])){
 		echo $distance."<br>";
 }
 
-//--------------- DISTANCE ---------------
+//--------------- MOYENNE  ---------------
 	
 if(isset($_POST['moyenne'])){
 	$moyenne = htmlspecialchars($_POST['moyenne']);
@@ -171,8 +172,26 @@ if(isset($_POST['moyenne'])){
 		echo $moyenne."<br>";
 }
 
+//--------------- TYPE EPREUVE (CODE CAT) ---------------
 
-  
+if(isset($_POST['catE']) and isset($_POST['n_epreuve'])){
+	if($_POST['n_epreuve'] == 0 and $_POST['catE'] != "Prologue"){
+		echo "c'est faux !";
+		$isValidTypeE = false;
+		$typeErrorTypeE = "n_epreuve = 0 : l'étape doit être le prologue";
+	
+	}
+	if($_POST['n_epreuve'] != 0 and $_POST['catE'] == "Prologue"){
+		echo "c'est faux !";
+		$isValidTypeE = false;
+		$typeErrorTypeE = "Seule l'épreuve n° 0 peut être prologue";
+	
+	}
+}
+
+
+
+
 //--------------- FONCTIONS DE TRAITEMENT ---------------
 
 function suppr_inutile($separateur, $chaine){

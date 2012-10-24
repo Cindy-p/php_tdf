@@ -25,11 +25,14 @@
 			$isValidJourTDF = true;
 			$isValidDistance = true;
 			$isValidMoyenne = true;
+			$isValidTypeE = true;
+			
             $typeErrorNomD = "";
             $typeErrorNomA = ""; 
 			$typeErrorJourTDF = "";
 			$typeErrorDistance = ""; 
-			$typeErrorMoyenne = ""; 
+			$typeErrorMoyenne = "";
+			$typeErrorTypeE = "";
 			
             
             if (!isset($_SESSION['db_username']) and !isset($_SESSION['db_password'])) {
