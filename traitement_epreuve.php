@@ -146,7 +146,7 @@ if(isset($_POST['distance'])){
 }
 
 //--------------- MOYENNE  ---------------
-	
+
 if(isset($_POST['moyenne'])){
 	$moyenne = htmlspecialchars($_POST['moyenne']);
 	
@@ -162,6 +162,8 @@ if(isset($_POST['moyenne'])){
 			if(preg_match("#,0#", $moyenne))
 				$moyenne = preg_replace("#,0#", "", $moyenne);
 		}
+		else if($moyenne == "")
+			$isValidMoyenne = true;
 		else{
 			$isValidMoyenne = false;
 			$typeErrorMoyenne = "La vitesse saisie est incorecte";
