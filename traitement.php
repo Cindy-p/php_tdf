@@ -30,10 +30,7 @@ if(isset($_POST['nomCoureur'])){
 			$typeErrorNom = "Le nom saisi contient des caractères interdits";
 			$isValidNom = false;
 		}
-		
-	/*if($isValidNom)
-      echo $nomCoureur."<br />";*/
-  }
+	}
 }
 
 //--------------- PRENOM COUREUR ---------------
@@ -60,10 +57,7 @@ if(isset($_POST['prenomCoureur'])){
 			$typeErrorPrenom = "Le nom saisi contient des caractères interdits";
 			$isValidPrenom = false;
 		}
-	
-	/*if($isValidPrenom)
-		echo $prenomCoureur."<br />";*/
-  }
+	}
 }
 
 //--------------- FONCTIONS DE TRAITEMENT ---------------
@@ -210,34 +204,4 @@ function traitementAccentsP($chaine){
 		
 	return $chaine;
 }
-
-//--------------- CONFIRMATION -----------------
-
-/*if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValidPrenom) and isset($_POST['nomPays'])) { ?>    
-    <dl class="dl-horizontal">
-        <dt>Nom</dt>
-        <dd><?php echo $nomCoureur; ?></dd>
-        <dt>Prénom</dt>
-        <dd><?php echo $prenomCoureur; ?></dd>
-        <dt>Année de naissance</dt>
-        <dd>
-        <?php
-            if (empty($_POST['anneeNaissance']))
-                echo "NC";
-            else
-                echo $_POST['anneeNaissance'];
-        ?>
-        </dd>
-        <dt>Pays</dt>
-        <dd><?php echo $_POST['nomPays']; ?></dd>
-        <dt>Année de participation</dt>
-        <dd>
-        <?php
-            if (empty($_POST['anneeTdf']))
-                echo "NC";
-            else
-                echo $_POST['anneeTdf'];
-        ?>
-        </dd>
-    </dl>
-<?php } ?>*/
+?>

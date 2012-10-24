@@ -19,12 +19,7 @@
             </div>
         </div>
         <div class="container" style="margin-top:20px;">
-            <?php
-            /*$isValidNom = true;
-            $isValidPrenom = true;
-            $typeErrorNom = "";
-            $typeErrorPrenom = "";*/   
-            
+            <?php           
             if (!isset($_SESSION['db_username']) and !isset($_SESSION['db_password'])) {
                 echo "<div class=\"alert alert-error\">Vous n'êtes pas connecté.</div>";
             }
