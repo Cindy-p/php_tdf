@@ -33,8 +33,7 @@
                 }
                 
 				include("formulaire_annee.php");
-				if (isset($_POST['validerForm']))
-					include("confirmation_annee.php");
+				include("confirmation_annee.php");
 				include("requete_annee.php");
                 
             }

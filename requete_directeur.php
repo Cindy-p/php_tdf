@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['validerConf'])) {
+if (isset($_POST['valider'])) {
 	
 	// Permet de générer un numéro de directeur -----------------------------------------------
 	$req1 = $conn->query("select max(N_DIRECTEUR)+1 as NUM from tdf_directeur_bidon")
@@ -30,25 +30,23 @@ if (isset($_POST['validerConf'])) {
 	}
 		
 	if ($verif->fetchColumn() > 0) {
-		echo "<div class=\"alert alert-error\">Le directeur est déjà
-		enregistré.</div>";
-	} else {
-		if ((isset($prenomDirecteur) and $isValidNom) and
-		(isset($prenomDirecteur) and $isValidPrenom)) {
+		echo "<div class=\"alert alert-error\">Le directeur est déjà enregistré.</div>";
+	}
+	else {	
+		if ((isset($prenomDirecteur) and $isValidNom) and (isset($prenomDirecteur) and $isValidPrenom)) {
 			if ($req3->execute(array(
-				'num_unique' => $num['NUM'], 'n' => $nomDirecteur, 'p' =>
-				$prenomDirecteur, 'compte' => $user['user']
+				'num_unique' => $num['NUM'],
+				'n' => $nomDirecteur,
+				'p' => $prenomDirecteur,
+				'compte' => $user['user']
 			)) == true)
-				echo "<div class=\"alert alert-success\">Le directeur a bien été
-				inséré.</div>";
+				echo "<div class=\"alert alert-success\">Le directeur a bien été inséré.</div>";
 			else
-				echo "<div class=\"alert alert-error\">L'enregistrement n'a pas
-				été effectué.</div>";
-		} $req3->closeCursor();
+				echo "<div class=\"alert alert-error\">L'enregistrement n'a pas été effectué.</div>";
+		}
+		$req3->closeCursor();
 	}
 	$verif->closeCursor();	
-} else if (isset($_POST['annuler'])){
-	header("location:index_directeur.php");
 }
 
 // Affichage du dernier directeur entré -----------------------------------------------------------------------------------------------

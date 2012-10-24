@@ -13,7 +13,9 @@
                     <input name="db_username" type="text" class="input-small" placeholder="Pseudo">
                 </div>
                 <input name="db_password" type="password" class="input-small" placeholder="Mot de passe">
-                <input name="db" type="text" class="input-small" placeholder="Instance">
+                <!--<label class="checkbox">
+                    <input type="checkbox"> Se souvenir de moi
+                </label>-->
                 <button type="submit" class="btn">Se connecter</button>
             </div>
         </form>

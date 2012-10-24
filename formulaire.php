@@ -113,7 +113,7 @@
 			<!-- BOUTON VALIDER ----------------------------------------------------  -->	
 				
                 <div class="controls">
-                    <input type="submit" name="validerForm" class="btn" value="Valider">
+                    <button type="submit" class="btn"/>Valider</button>
                 </div>
 				
 				<p> * : champs obligatoire </p>

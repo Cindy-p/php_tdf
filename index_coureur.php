@@ -38,10 +38,9 @@
                 
                 include("traitement.php");
 				include("formulaire.php");
-				if (isset($_POST['validerForm'])) {
-					include("confirmation.php");
-				}
+				include("confirmation.php");
 				include("requetes.php");
+                
             }
             ?>
         </div>

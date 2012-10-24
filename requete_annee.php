@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['validerConf'])) {
+if (isset($_POST['valider'])) {
     
     // Permet de récupérer l'identifiant de connexion -------------------------------------------
 	$req2 = $conn->query("select sys_context('USERENV','SESSION_USER') as \"user\" from dual")
@@ -40,8 +40,6 @@ if (isset($_POST['validerConf'])) {
 		$req3->closeCursor();
 	}
 	$verif->closeCursor();
-} else if (isset($_POST['annuler'])){
-	header("location:index_annee.php");
 }
 
 // Affichage de la dernière année entré -----------------------------------------------------------------------------------------------

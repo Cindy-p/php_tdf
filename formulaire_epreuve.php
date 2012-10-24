@@ -70,8 +70,13 @@
                                     <option value="<?php echo $donnees['NOM']; ?>" <?php verifSelect('paysD', $donnees['NOM']); ?> > <?php echo $donnees['NOM']; ?> </option>
                             <?php } ?>
                         </select>
+						<?php if($isValidNomD) { ?>
 						<input type="text" name="villeD" id="villeD" placeholder="Ville de départ" value="<?php verifRempli('villeD'); ?>" maxlength="30" required> 
-                    </div>
+						<?php } else { ?>
+						<input type="text" name="villeD" id="villeD" maxlength="30" required> 
+						<span class="help-inline"> <?php echo $typeErrorNomD; ?> </span>
+						<?php } ?>
+					</div>
                 </div>
 				
 			<!-- ARRIVEE ---------------------------------------------------  -->
@@ -87,16 +92,45 @@
                                     <option value="<?php echo $donnees['NOM']; ?>" <?php verifSelect('paysA', $donnees['NOM']); ?> > <?php echo $donnees['NOM']; ?> </option>
                             <?php } ?>
                         </select>
+						<?php if($isValidNomA) { ?>
 						<input type="text" name="villeA" id="villeA" placeholder="Ville d'arrivée" value="<?php verifRempli('villeA'); ?>" maxlength="30" required> 
+						<?php } else { ?>
+						<input type="text" name="villeA" id="villeA" maxlength="30" required> 
+						<span class="help-inline"> <?php echo $typeErrorNomA; ?> </span>
+						<?php } ?>
                     </div>
                 </div>
 		
 			<!-- JOUR EPREUVE ----------------------------------------------- -->
 			
-			<div class="control-group">    
-				<label class="control-label" for="jourEpreuve">Jour épreuve*</label>
+			<div class="control-group">   
+				<label class="control-label" for="jourEpreuve">Date épreuve*</label>
 				<div class="controls">
-					<input type="date" name="dateEpreuve">  <!-- à voir si je conserve -->
+					
+					<select name ="moisTDF" id ="moisTDF" size ="1" required>
+						<option><?php echo ''; ?></option>	
+						<option value="1" <?php verifSelect('moisTDF', "1"); ?>> janvier </option>
+						<option value="2" <?php verifSelect('moisTDF', "2"); ?>> février </option>
+						<option value="3" <?php verifSelect('moisTDF', "3"); ?>> mars </option>
+						<option value="4" <?php verifSelect('moisTDF', "4"); ?>> avril </option>
+						<option value="5" <?php verifSelect('moisTDF', "5"); ?>> mai </option>
+						<option value="6" <?php verifSelect('moisTDF', "6"); ?>> juin </option>
+						<option value="7" <?php verifSelect('moisTDF', "7"); ?>> juillet </option>
+						<option value="8" <?php verifSelect('moisTDF', "8"); ?>> août </option>
+						<option value="9" <?php verifSelect('moisTDF', "9"); ?>> septembre </option>
+						<option value="10" <?php verifSelect('moisTDF', "10"); ?>> octobre </option>
+						<option value="11" <?php verifSelect('moisTDF', "11"); ?>> novembre </option>
+						<option value="12" <?php verifSelect('moisTDF', "12"); ?>> décembre </option>
+							
+					</select>
+					
+					<?php if($isValidJourTDF) { ?>
+						<input type="text" name="jourTDF" id="jourTDF" value="<?php verifRempli('jourTDF'); ?>" maxlength="2" required>
+					<?php } else { ?>
+						<input type="text" name="jourTDF" id="jourTDF"  maxlength="2" required>
+						<span class="help-inline"> <?php echo $typeErrorJourTDF; ?> </span>
+					<?php } ?>
+					
 				</div>
             </div>
 			
@@ -108,9 +142,9 @@
 					<select name="catE" id = "catE" size="1" required>
 						<option><?php echo ''; ?></option>
 						<?php
-							$req = $conn->query("select distinct CAT_CODE from TDF_EPREUVE_BIDON order by CAT_CODE");
+							$req = $conn->query("select distinct CAT_CODE, LIBELLE from TDF_CATEGORIE_EPREUVE order by CAT_CODE");
 							while ($donnees = $req->fetch()) { ?>
-								<option value="<?php echo $donnees['CAT_CODE']; ?>" <?php verifSelect('catE', $donnees['CAT_CODE']); ?> > <?php echo $donnees['CAT_CODE']; ?> </option>
+								<option value="<?php echo $donnees['LIBELLE']; ?>" <?php verifSelect('catE', $donnees['LIBELLE']); ?> > <?php echo $donnees['LIBELLE']; ?> </option>
 						<?php } ?>
                     </select>
 				</div>
@@ -121,7 +155,12 @@
 			<div class="control-group">    
 				<label class="control-label" for="distance">Distance à parcourir*</label>
 				<div class="controls">
-					<input type="number" name="distance" id="distance" placeholder="distance en km" value="<?php verifRempli('distance'); ?>" maxlength="5" required> 
+					<?php if($isValidDistance) { ?>
+						<input type="text" name="distance" id="distance" placeholder="distance en km" value="<?php verifRempli('distance'); ?>" maxlength="5" required> 
+					<?php } else { ?>
+						<input type="text" name="distance" id="distance" maxlength="5" required> 
+						<span class="help-inline"> <?php echo $typeErrorDistance; ?> </span>
+					<?php } ?>						
 				</div>
             </div>
 			
@@ -130,7 +169,12 @@
 			<div class="control-group">    
 				<label class="control-label" for="moyenne">Vitesse moyenne*</label>
 				<div class="controls">
-					<input type="number" name="moyenne" id="moyenne" placeholder="vitesse moyenne en km/h" value="<?php verifRempli('moyenne'); ?>" maxlength="6" required> 
+					<?php if($isValidMoyenne) { ?>
+						<input type="text" name="moyenne" id="moyenne" placeholder="vitesse moyenne en km/h" value="<?php verifRempli('moyenne'); ?>" maxlength="6"> 
+					<?php } else { ?>
+						<input type="text" name="moyenne" id="moyenne" maxlength="6"> 
+						<span class="help-inline"> <?php echo $typeErrorMoyenne; ?> </span>
+				<?php } ?>	
 				</div>
             </div>
 			

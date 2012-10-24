@@ -21,7 +21,7 @@
                         <input type="hidden" name="nomDirecteur" value="<?php echo $nomDirecteur; ?>">
                         <input type="hidden" name="prenomDirecteur" value="<?php echo $prenomDirecteur; ?>">
                         
-                        <input type="submit" name="validerConf" class="btn btn-warning" value="Valider"/>
+                        <input type="submit" name="valider" class="btn btn-warning" value="Valider"/>
                         <input type="submit" name="annuler" class="btn" value="Annuler"/>
                     </div>
                 <?php } ?>
