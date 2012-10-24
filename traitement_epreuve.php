@@ -30,8 +30,8 @@ if(isset($_POST['villeD'])){
 			$isValidNomD = false;
 		}
 		
-	if($isValidNomD)
-      echo $villeD."<br />";
+	/*if($isValidNomD)
+      echo $villeD."<br />";*/
 	}
 }  
 //--------------- ARRIVEE ---------------
@@ -63,9 +63,9 @@ if(isset($_POST['villeA'])){
 			$isValidNomA = false;
 		}
 		
-	if($isValidNomA)
-      echo $villeA."<br />";
-	}  
+	/*if($isValidNomA)
+      echo $villeA."<br />";*/
+	} 
 }	
 
 //--------------- JOUR EPREUVE ---------------
@@ -141,8 +141,8 @@ if(isset($_POST['distance'])){
 		}
 	}
 	
-	if($isValidDistance)
-		echo $distance."<br>";
+	/*if($isValidDistance)
+		echo $distance."<br>";*/
 }
 
 //--------------- MOYENNE  ---------------
@@ -170,8 +170,8 @@ if(isset($_POST['moyenne'])){
 		}
 	}
 	
-	if($isValidMoyenne)
-		echo $moyenne."<br>";
+	/*if($isValidMoyenne)
+		echo $moyenne."<br>";*/
 }
 
 //--------------- TYPE EPREUVE (CODE CAT) ---------------

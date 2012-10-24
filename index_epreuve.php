@@ -47,8 +47,10 @@
                 }
                 
                 include("traitement_epreuve.php");    
-                //include("requetes_epreuve.php");
                 include("formulaire_epreuve.php");
+				if (isset($_POST['validerForm']))
+					include("confirmation_epreuve.php");
+				include("requete_epreuve.php");
             }
             ?>
         </div>

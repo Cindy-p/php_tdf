@@ -13,11 +13,6 @@ if (isset($_POST['validerConf'])) {
 	$user = $req2->fetch();
 	$req2->closeCursor();
 	
-	// Permet d'insérer un nouveau directeur dans la base ----------------------------------------------------------
-	$req3 = $conn->prepare("insert into tdf_directeur_bidon (N_DIRECTEUR, NOM, PRENOM, DATE_INSERT, COMPTE_ORACLE)
-						   values (:num_unique, :n, :p, to_char(sysdate, 'DD-MM-YY'), :compte)")
-			or die(print_r($conn->errorInfo()));
-	
 	// On vérifie si le directeur existe dans la base
 	$verif = $conn->prepare("select * from tdf_directeur_bidon where nom = :n and prenom = :p")
 				or die(print_r($conn->errorInfo()));
@@ -33,17 +28,21 @@ if (isset($_POST['validerConf'])) {
 		echo "<div class=\"alert alert-error\">Le directeur est déjà
 		enregistré.</div>";
 	} else {
-		if ((isset($prenomDirecteur) and $isValidNom) and
-		(isset($prenomDirecteur) and $isValidPrenom)) {
+		// Permet d'insérer un nouveau directeur dans la base ----------------------------------------------------------
+		$req3 = $conn->prepare("insert into tdf_directeur_bidon (N_DIRECTEUR, NOM, PRENOM, DATE_INSERT, COMPTE_ORACLE)
+						   values (:num_unique, :n, :p, to_char(sysdate, 'DD-MM-YY'), :compte)")
+				or die(print_r($conn->errorInfo()));
+			
+		if ((isset($prenomDirecteur) and $isValidNom) and (isset($prenomDirecteur) and $isValidPrenom)) {
 			if ($req3->execute(array(
-				'num_unique' => $num['NUM'], 'n' => $nomDirecteur, 'p' =>
-				$prenomDirecteur, 'compte' => $user['user']
+				'num_unique' => $num['NUM'],
+				'n' => $nomDirecteur,
+				'p' => $prenomDirecteur,
+				'compte' => $user['user']
 			)) == true)
-				echo "<div class=\"alert alert-success\">Le directeur a bien été
-				inséré.</div>";
+				echo "<div class=\"alert alert-success\">Le directeur a bien été inséré.</div>";
 			else
-				echo "<div class=\"alert alert-error\">L'enregistrement n'a pas
-				été effectué.</div>";
+				echo "<div class=\"alert alert-error\">L'enregistrement n'a pas été effectué.</div>";
 		} $req3->closeCursor();
 	}
 	$verif->closeCursor();	

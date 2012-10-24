@@ -35,7 +35,7 @@
                         <select name="anneeTdf" id = "anneeTdf" size="1" required>
                             <option><?php echo ''; ?></option>
 							<?php
-                                $req = $conn->query("select ANNEE from TDF_ANNEE order by ANNEE");
+                                $req = $conn->query("select ANNEE from TDF_ANNEE_BIDON order by ANNEE");
                                 while ($donnees = $req->fetch()) { ?>
                                     <option value="<?php echo $donnees['ANNEE']; ?>" <?php verifSelect('anneeTdf', $donnees['ANNEE']); ?> > <?php echo $donnees['ANNEE']; ?> </option>
                             <?php } ?>
@@ -193,7 +193,7 @@
 			<!-- BOUTON VALIDER --------------------------------------------  -->	
 				
                 <div class="controls">
-                    <button type="submit" class="btn"/>Valider</button>
+                    <input type="submit" name="validerForm" class="btn" value="Valider">
                 </div>
 				
 				<p> * : champs obligatoire </p>

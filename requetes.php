@@ -40,12 +40,12 @@ if (isset($_POST['validerConf'])) {
 	}
 	else {
 		// Insertion d'un coureur -------------------------------------------------------------------------------------------------
-		$req4 = $conn->prepare("insert into tdf_coureur_bidon (N_COUREUR, NOM, PRENOM, ANNEE_NAISSANCE, CODE_TDF, ANNEE_TDF, DATE_INSERT, COMPTE_ORACLE)
+		$ajout = $conn->prepare("insert into tdf_coureur_bidon (N_COUREUR, NOM, PRENOM, ANNEE_NAISSANCE, CODE_TDF, ANNEE_TDF, DATE_INSERT, COMPTE_ORACLE)
 							   values (:num_unique, :n, :p, :an, :ctdf, :atdf, to_char(sysdate, 'DD-MM-YY'), :compte)")
 				or die(print_r($conn->errorInfo()));
 				
 		if ((isset($nomCoureur) and $isValidNom) and (isset($prenomCoureur) and $isValidPrenom) and isset($_POST['nomPays'])) {
-			if ($req4->execute(array(
+			if ($ajout->execute(array(
 				'num_unique' => $num['NUM'],
 				'n' => $nomCoureur,
 				'p' => $prenomCoureur,
@@ -58,7 +58,7 @@ if (isset($_POST['validerConf'])) {
 			else
 				echo "<div class=\"alert alert-error\">L'enregistrement n'a pas été effectué.</div>";
 		}
-		$req4->closeCursor();
+		$ajout->closeCursor();
 	}
 	$verif->closeCursor();
 } else if (isset($_POST['annuler'])){
