@@ -1,11 +1,6 @@
 <?php
-/*if (isset($_POST['anneeNaissance']) == "")
-	$_POST['anneeNaissance'] = null;
-	
-if (isset($_POST['anneeTdf']) == "")
-	$_POST['anneeTdf'] = null;*/
-	
-if (isset($_POST['valider'])) {
+
+if (isset($_POST['validerConf'])) {
 	// requête d'insertion des coureurs ---------------------------------------------------------------------------------------------------------------------------
 	// Permet de générer un numéro de coureur -----------------------------------------------------
 	$req1 = $conn->query("select max(N_COUREUR)+5 as NUM from tdf_coureur_bidon")
@@ -66,6 +61,8 @@ if (isset($_POST['valider'])) {
 		$req4->closeCursor();
 	}
 	$verif->closeCursor();
+} else if (isset($_POST['annuler'])){
+	header("location:index_coureur.php");
 }
 
 // Affichage du dernier coureur entré ---------------------------------------------------------------------------------------
@@ -99,4 +96,5 @@ echo "</tr>";
 echo "</tbody>";
 echo "</table>";
 $affichage->closeCursor();
+
 ?>

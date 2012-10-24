@@ -19,19 +19,7 @@
             </div>
         </div>
         <div class="container" style="margin-top:20px;">
-            <?php
-            $isValidNomD = true;
-            $isValidNomA = true;
-			$isValidJourTDF = true;
-			$isValidDistance = true;
-			$isValidMoyenne = true;
-            $typeErrorNomD = "";
-            $typeErrorNomA = ""; 
-			$typeErrorJourTDF = "";
-			$typeErrorDistance = ""; 
-			$typeErrorMoyenne = ""; 
-			
-            
+            <?php           
             if (!isset($_SESSION['db_username']) and !isset($_SESSION['db_password'])) {
                 echo "<div class=\"alert alert-error\">Vous n'êtes pas connecté.</div>";
             }

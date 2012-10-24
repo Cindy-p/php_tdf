@@ -38,7 +38,8 @@
 				
                 include("traitement_directeur.php");
 				include("formulaire_directeur.php");
-				include("confirmation_directeur.php");
+				if (isset($_POST['validerForm']))
+					include("confirmation_directeur.php");
 				include("requete_directeur.php");
             }
             ?>

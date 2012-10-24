@@ -21,7 +21,7 @@
                         <input type="hidden" name="anneeTdf" value="<?php echo $_POST['anneeTdf']; ?>">
                         <input type="hidden" name="jourRepos" value="<?php echo $_POST['jourRepos']; ?>">
                         
-                        <input type="submit" name="valider" class="btn btn-warning" value="Valider"/>
+                        <input type="submit" name="validerConf" class="btn btn-warning" value="Valider"/>
                         <input type="submit" name="annuler" class="btn" value="Annuler"/>
                     </div>
                 <?php } ?>
