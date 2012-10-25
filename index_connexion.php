@@ -20,7 +20,8 @@
         </div>
         <div class="container" style="margin-top:20px;">
             <?php
-            if (isset($_SESSION['db_username']) and isset($_SESSION['db_password'])) {
+            
+            if (isset($_SESSION['db_username']) and isset($_SESSION['db_password']) and isset($_SESSION['db'])) {
                 echo "<div class=\"alert alert-info\">Vous êtes connecté en tant que ".$_SESSION['db_username'].".</div>";
             }
             else {

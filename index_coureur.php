@@ -25,7 +25,7 @@
             $typeErrorNom = "";
             $typeErrorPrenom = "";    
             
-            if (!isset($_SESSION['db_username']) and !isset($_SESSION['db_password'])) {
+            if (!isset($_SESSION['db_username']) and !isset($_SESSION['db_password']) and !isset($_SESSION['db'])) {
                 echo "<div class=\"alert alert-error\">Vous n'êtes pas connecté.</div>";
             }
             else {

@@ -10,10 +10,10 @@
             <div class="controls">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
-                    <input name="db_username" type="text" class="input-small" placeholder="Pseudo">
+                    <input name="db_username" type="text" class="input-small" placeholder="Pseudo" required>
                 </div>
-                <input name="db_password" type="password" class="input-small" placeholder="Mot de passe">
-                <input name="db" type="text" class="input-small" placeholder="Instance">
+                <input name="db_password" type="password" class="input-small" placeholder="Mot de passe" required>
+                <input name="db" type="text" class="input-small" placeholder="Instance" required>
                 <button type="submit" class="btn">Se connecter</button>
             </div>
         </form>
