@@ -22,8 +22,12 @@ if(isset($_POST['villeD'])){
 		$villeD = suppr_inutile("-", $villeD); 
 		$villeD = suppr_inutile("'", $villeD);
 		
-		if(preg_match("#^[a-zA-Z\' -]{0,}[0-9]{0,1}[a-zA-Z\' -]{0,}$#", $villeD)){
+		if(preg_match("#^[a-zA-Z\' -]{0,}[0-9]{0,4}[a-zA-Z\' -]{0,}$#", $villeD)){
 			$isValidNomD = true;
+		}
+		else if(preg_match("#[0-9]{5,}#", $villeD)){
+			$isValidNomD = false;
+			$typeErrorNomD = "La ville ne peut pas contenir plus de 4 chiffres";
 		}
 		else{
 			$typeErrorNomD = "La ville saisie contient des caractères interdits";
@@ -55,8 +59,12 @@ if(isset($_POST['villeA'])){
 		$villeA = suppr_inutile("-", $villeA); 
 		$villeA = suppr_inutile("'", $villeA);
 		
-		if(preg_match("#^[a-zA-Z\' -]{0,}[0-9]{0,1}[a-zA-Z\' -]{0,}$#", $villeA)){
+		if(preg_match("#^[a-zA-Z\' -]{0,}[0-9]{0,4}[a-zA-Z\' -]{0,}$#", $villeA)){
 			$isValidNomA = true;
+		}
+		else if(preg_match("#[0-9]{5,}#", $villeA)){
+			$isValidNomA = false;
+			$typeErrorNomA = "La ville ne peut pas contenir plus de 4 chiffres";
 		}
 		else{
 			$typeErrorNomA = "La ville saisie contient des caractères interdits";
@@ -128,7 +136,7 @@ if(isset($_POST['distance'])){
 		$typeErrorDistance = "La distance doit être un nombre";
 	}
 	else {
-		if(preg_match("#^[1-9][0-9]{1,2}([,\.][0-9])?$#", $distance)){
+		if(preg_match("#^[1-9][0-9]{0,2}([,\.][0-9])?$#", $distance)){
 			$isValidDistance = true;
 			if(preg_match("#\.#", $distance))
 				$distance = preg_replace("#\.#", ",", $distance);
