@@ -42,7 +42,7 @@ if(isset($_POST['prenomDirecteur'])){
 		$typeErrorPrenom = "Le prénom saisi est trop court";
 		$isValidPrenom = false;
 	}
-	else if(preg_match("#^[ |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{2,}|[']{2,}|[-| ]$#", $prenomDirecteur)){
+	else if(preg_match("#^[ |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|0-9]|[-]{2,}|[-| ]$#", $prenomDirecteur)){
         $typeErrorPrenom = "Le prénom saisi contient des caractères interdits";
 		$isValidPrenom = false;
 	}
@@ -66,8 +66,9 @@ function suppr_inutile($separateur, $chaine){
 	
 	if(preg_match("#( ){1,}$separateur( ){1,}|( ){1,}$separateur|$separateur( ){1,}#", $chaine))
 		$chaine = preg_replace("#( ){1,}$separateur( ){1,}|( ){1,}$separateur|$separateur( ){1,}#", "$separateur", $chaine);
-	
-	else if(preg_match("#('){1,}-('){1,}|('){1,}-|-('){1,}#", $chaine))
+	if(preg_match("#('){2,}|('){1,}( ){1,}('){1,}#", $chaine))
+		$chaine = preg_replace("#('){2,}|('){1,}( ){1,}('){1,}#", "'", $chaine);
+	if(preg_match("#('){1,}-('){1,}|('){1,}-|-('){1,}#", $chaine))
 		$chaine ="";
 	
 	return $chaine;

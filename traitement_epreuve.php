@@ -7,11 +7,11 @@ if(isset($_POST['villeD'])){
 	$villeD = htmlspecialchars($_POST['villeD']);
   
 	if(preg_match("#^.{0,1}$#", $villeD)){
-		$typeErrorNomD = "La nom de ville saisi est trop court";
+		$typeErrorNomD = "Le nom de ville saisi est trop court";
 		$isValidNomD = false;
 	}
-	else if (preg_match("#^[ |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|]|[-]{3,}|[-| ]$#", $villeD)){
-        $typeErrorNomD = "Le nom de ville saisi contient des caractères interdits";
+	else if (preg_match("#^[ |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|]|[-]{é,}|[-| ]$#", $villeD)){
+        $typeErrorNomD = "La ville saisie contient des caractères interdits";
 		$isValidNomD = false;
 	}
 	else {
@@ -26,7 +26,7 @@ if(isset($_POST['villeD'])){
 			$isValidNomD = true;
 		}
 		else{
-			$typeErrorNomD = "Le nom de ville saisie contient des caractères interdits";
+			$typeErrorNomD = "La ville saisie contient des caractères interdits";
 			$isValidNomD = false;
 		}
 		
@@ -40,10 +40,10 @@ if(isset($_POST['villeA'])){
 	$villeA = htmlspecialchars($_POST['villeA']);
   
 	if(preg_match("#^.{0,1}$#", $villeA)){
-		$typeErrorNomA = "La nom de ville saisi est trop court";
+		$typeErrorNomA = "Le nom de ville saisi est trop court";
 		$isValidNomA = false;
 	}
-	else if (preg_match("#^[ |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|]|[-]{3,}|[-| ]$#", $villeA)){
+	else if (preg_match("#^[ |-]|[\#\!\^\$\(\)\[\]\{\}\?\+\*\.\\\"%&,/:;@~_\|]|[-]{2,}|[-| ]$#", $villeA)){
         $typeErrorNomA = "La ville saisie contient des caractères interdits";
 		$isValidNomA = false;
 	}
@@ -75,7 +75,7 @@ if(isset($_POST['jourTDF'])){
 	
 	if(preg_match("#[^0-9]#", $jourTDF)){
 		$isValidJourTDF = false;
-		$typeErrorJourTDF = "le jour doit être un nombre";
+		$typeErrorJourTDF = "Le jour doit être un nombre";
 	}
 	else{
 		if(preg_match("#[13578]|1[02]#", $_POST['moisTDF'])){
@@ -83,7 +83,7 @@ if(isset($_POST['jourTDF'])){
 				$isValidJourTDF = true;
 			else {
 				$isValidJourTDF = false;
-				$typeErrorJourTDF = "le mois séléctionné ne comporte que 31 jours";
+				$typeErrorJourTDF = "Le mois séléctionné ne comporte que 31 jours";
 			}
 		}
 		else if(preg_match("#[2469]|11#", $_POST['moisTDF'])){
@@ -93,7 +93,7 @@ if(isset($_POST['jourTDF'])){
 						$isValidJourTDF = true;
 					else {
 						$isValidJourTDF = false;
-						$typeErrorJourTDF = "le mois séléctionné ne comporte que 29 jours";
+						$typeErrorJourTDF = "Le mois séléctionné ne comporte que 29 jours";
 					}
 				}
 				else {
@@ -101,7 +101,7 @@ if(isset($_POST['jourTDF'])){
 						$isValidJourTDF = true;
 					else {
 						$isValidJourTDF = false;
-						$typeErrorJourTDF = "le mois séléctionné ne comporte que 28 jours";
+						$typeErrorJourTDF = "Le mois séléctionné ne comporte que 28 jours";
 					}	
 				}
 				
@@ -111,7 +111,7 @@ if(isset($_POST['jourTDF'])){
 					$isValidJourTDF = true;
 				else {
 					$isValidJourTDF = false;
-					$typeErrorJourTDF = "le mois séléctionné ne comporte que 30 jours";
+					$typeErrorJourTDF = "Le mois séléctionné ne comporte que 30 jours";
 				}
 			}
 		}
@@ -125,7 +125,7 @@ if(isset($_POST['distance'])){
 	
 	if(preg_match("#[^(0-9,\.)]#", $distance)){
 		$isValidDistance = false;
-		$typeErrorDistance = "la distance doit être un nombre";
+		$typeErrorDistance = "La distance doit être un nombre";
 	}
 	else {
 		if(preg_match("#^[1-9][0-9]{1,2}([,\.][0-9])?$#", $distance)){
@@ -152,7 +152,7 @@ if(isset($_POST['moyenne'])){
 	
 	if(preg_match("#[^(0-9,\.)]#", $moyenne)){
 		$isValidMoyenne = false;
-		$typeErrorMoyenne = "la vitesse moyenne doit être un nombre";
+		$typeErrorMoyenne = "La vitesse moyenne doit être un nombre";
 	}
 	else {
 		if(preg_match("#^[1-9][0-9]([,\.][0-9]{1,3})?$#", $moyenne)){
@@ -178,13 +178,13 @@ if(isset($_POST['moyenne'])){
 
 if(isset($_POST['catE']) and isset($_POST['n_epreuve'])){
 	if($_POST['n_epreuve'] == 0 and $_POST['catE'] != "Prologue"){
-		echo "c'est faux !";
+		//echo "c'est faux !";
 		$isValidTypeE = false;
-		$typeErrorTypeE = "n_epreuve = 0 : l'étape doit être le prologue";
+		$typeErrorTypeE = "Epreuve n°0 : l'étape doit être le prologue";
 	
 	}
 	if($_POST['n_epreuve'] != 0 and $_POST['catE'] == "Prologue"){
-		echo "c'est faux !";
+		//echo "c'est faux !";
 		$isValidTypeE = false;
 		$typeErrorTypeE = "Seule l'épreuve n° 0 peut être prologue";
 	
@@ -200,9 +200,9 @@ function suppr_inutile($separateur, $chaine){
 	
 	if(preg_match("#( ){1,}$separateur( ){1,}|( ){1,}$separateur|$separateur( ){1,}#", $chaine))
 		$chaine = preg_replace("#( ){1,}$separateur( ){1,}|( ){1,}$separateur|$separateur( ){1,}#", "$separateur", $chaine);
-	if(preg_match("#('){2,}#", $chaine))
-		$chaine = preg_replace("#('){2,}#", "'", $chaine);
-	if(preg_match("#('){1,}-('){1,}|('){1,}-|-('){1,}|('){2,}|('){1,}( ){1,}('){1,}|('){1,}( ){1,}('){1,}#", $chaine))
+	if(preg_match("#('){2,}|('){1,}( ){1,}('){1,}#", $chaine))
+		$chaine = preg_replace("#('){2,}|('){1,}( ){1,}('){1,}#", "'", $chaine);
+	if(preg_match("#('){1,}-('){1,}|('){1,}-|-('){1,}#", $chaine))
 		$chaine ="";
 	
 	return $chaine;
