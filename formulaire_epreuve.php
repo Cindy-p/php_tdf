@@ -71,10 +71,12 @@
                             <?php } ?>
                         </select>
 						<?php if($isValidNomD) { ?>
-						<input type="text" name="villeD" id="villeD" placeholder="Ville de départ" value="<?php verifRempli('villeD'); ?>" maxlength="40" required> 
+							<input type="text" name="villeD" id="villeD" placeholder="Ville de départ" value="<?php verifRempli('villeD'); ?>" maxlength="40" required> 
 						<?php } else { ?>
-						<input type="text" name="villeD" id="villeD" maxlength="40" required> 
-						<span class="help-inline"> <?php echo $typeErrorNomD; ?> </span>
+						<span class="control-group error">
+							<input type="text" name="villeD" id="villeD" maxlength="40" required> 
+							<span class="help-inline"> <?php echo $typeErrorNomD; ?> </span>
+						</span>
 						<?php } ?>
 					</div>
                 </div>
@@ -93,10 +95,12 @@
                             <?php } ?>
                         </select>
 						<?php if($isValidNomA) { ?>
-						<input type="text" name="villeA" id="villeA" placeholder="Ville d'arrivée" value="<?php verifRempli('villeA'); ?>" maxlength="40" required> 
+							<input type="text" name="villeA" id="villeA" placeholder="Ville d'arrivée" value="<?php verifRempli('villeA'); ?>" maxlength="40" required> 
 						<?php } else { ?>
-						<input type="text" name="villeA" id="villeA" maxlength="40" required> 
-						<span class="help-inline"> <?php echo $typeErrorNomA; ?> </span>
+						<span class="control-group error">
+							<input type="text" name="villeA" id="villeA" maxlength="40" required> 
+							<span class="help-inline"> <?php echo $typeErrorNomA; ?> </span>
+						</span>
 						<?php } ?>
                     </div>
                 </div>
@@ -127,8 +131,10 @@
 					<?php if($isValidJourTDF) { ?>
 						<input type="text" name="jourTDF" id="jourTDF" value="<?php verifRempli('jourTDF'); ?>" maxlength="2" required>
 					<?php } else { ?>
+					<span class="control-group error">
 						<input type="text" name="jourTDF" id="jourTDF"  maxlength="2" required>
 						<span class="help-inline"> <?php echo $typeErrorJourTDF; ?> </span>
+					</span>
 					<?php } ?>
 					
 				</div>
@@ -149,6 +155,7 @@
 							<?php } ?>
 						</select>		
 					<?php } else { ?>
+					<span class="control-group error">
 						<select name="catE" id = "catE" size="1" required>
 							<option><?php echo ''; ?></option>
 							<?php
@@ -158,6 +165,7 @@
 							<?php } ?>
 						</select>
 						<span class="help-inline"> <?php echo $typeErrorTypeE; ?> </span>
+					</span>
 					<?php } ?>
 				</div>
             </div>
@@ -170,8 +178,10 @@
 					<?php if($isValidDistance) { ?>
 						<input type="text" name="distance" id="distance" placeholder="distance en km" value="<?php verifRempli('distance'); ?>" maxlength="5" required> 
 					<?php } else { ?>
+					<span class="control-group error">
 						<input type="text" name="distance" id="distance" maxlength="5" required> 
 						<span class="help-inline"> <?php echo $typeErrorDistance; ?> </span>
+					</span>
 					<?php } ?>						
 				</div>
             </div>
@@ -184,8 +194,10 @@
 					<?php if($isValidMoyenne) { ?>
 						<input type="text" name="moyenne" id="moyenne" placeholder="vitesse moyenne en km/h" value="<?php verifRempli('moyenne'); ?>" maxlength="6"> 
 					<?php } else { ?>
+					<span class="control-group error">
 						<input type="text" name="moyenne" id="moyenne" maxlength="6"> 
 						<span class="help-inline"> <?php echo $typeErrorMoyenne; ?> </span>
+					</span>
 				<?php } ?>	
 				</div>
             </div>

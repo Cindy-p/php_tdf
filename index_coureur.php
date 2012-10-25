@@ -36,12 +36,12 @@
                     die('Erreur : ' . $e->getMessage());
                 }
                 
-                include("traitement.php");
-				include("formulaire.php");
+                include("traitement_coureur.php");
+				include("formulaire_coureur.php");
 				if (isset($_POST['validerForm'])) {
-					include("confirmation.php");
+					include("confirmation_coureur.php");
 				}
-				include("requetes.php");
+				include("requete_coureur.php");
             }
             ?>
         </div>
